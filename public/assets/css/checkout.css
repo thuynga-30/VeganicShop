@@ -1,0 +1,42 @@
+.checkout {
+    padding: 150px 0;
+}
+
+.checkout__title {
+    font-size: 5rem;
+    margin-bottom: 30px;
+}
+
+.checkout__item {
+    margin-bottom: 30px;
+}
+
+.checkout__label {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.checkout__input {
+    font-size: 1.8rem;
+}
+
+.form-check {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.check__mess{
+    margin-top: 20px;
+    font-size: 1.8rem;
+}
+.cart__table{
+    width: 100%;
+}
+.form-check-input{
+    background-color: var(--primary-color);
+}
+.form-check-input:checked{
+    background-color: var(--primary-color);
+}

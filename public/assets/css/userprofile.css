@@ -1,0 +1,67 @@
+.containerprf {
+  max-width: 500px;
+  margin: 150px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#prlnameid .prfname {
+  text-align: center !important;
+  color: #333 !important;
+}
+
+.form-groupprf {
+  margin-bottom: 15px;
+}
+
+.lb-prf {
+  display: block;
+  font-weight: bold;
+  color: #555;
+}
+
+.infor {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.inp {
+  resize: vertical;
+}
+
+.btnprf {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btnprf {
+  background-color: #007bff;
+}
+
+.save-btnprf {
+  background-color: #28a745;
+}
+
+.cancel-btnprf {
+  background-color: #dc3545;
+}
+
+.hiddenprf {
+  display: none;
+}
+
+.form-actionsprf {
+  display: flex;
+  justify-content: space-between;
+}

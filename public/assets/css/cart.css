@@ -1,0 +1,189 @@
+.btn {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.cart {
+    padding: 150px 0;
+
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+
+.table th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.table tr {
+    padding: 50px 0;
+    box-shadow: 0px 1px 13px 0px rgba(0, 0, 0, 0.05);
+}
+
+.table td,
+.table th {
+    padding: 20px;
+    vertical-align: middle;
+}
+
+.cart__product {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart__img-wrap {
+    width: 100px;
+    height: 100px;
+}
+
+.cart__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.cart__product-title {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.cart__number-box {
+    display: flex;
+    align-items: center;
+    gap:10px; /* Khoảng cách giữa input và nút */
+}
+.cart__number-box input {
+    width: 60px; /* Đặt chiều rộng cố định cho ô input */
+    height: 40px; /* Căn chỉnh chiều cao */
+    border: 1px solid #ddd; /* Đường viền nhẹ nhàng */
+    border-radius: 5px; /* Góc bo tròn */
+    text-align: center; /* Căn giữa chữ số */
+}
+
+.cart__number-box button {
+    background-color: #007bff; /* Màu xanh chuẩn Bootstrap */
+    color: #fff; /* Màu chữ trắng */
+    border: none; /* Bỏ viền */
+    padding: 8px 12px; /* Tạo kích thước nút cân đối */
+    border-radius: 5px; /* Bo tròn góc nút */
+    cursor: pointer; /* Con trỏ dạng bàn tay khi hover */
+    transition: all 0.3s ease; /* Hiệu ứng khi hover */
+}
+
+.cart__number-box button:hover {
+    background-color: #0056b3; /* Màu tối hơn khi hover */
+}
+
+.cart__number {
+    -webkit-appearance: none;
+    border-left: 0;
+    border-radius: 0;
+    border-right: 0;
+    box-sizing: border-box;
+    cursor: text;
+    font-size: 16px;
+    font-weight: 400;
+    height: 32px;
+    text-align: center;
+    width: 50px;
+}
+
+.cart__btn {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    border: 1px solid rgba(0, 0, 0, .09);
+    border-radius: 2px;
+    color: rgba(0, 0, 0, .8);
+    cursor: pointer;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    letter-spacing: 0;
+    line-height: 1;
+    outline: none;
+    transition: background-color .1s cubic-bezier(.4, 0, .6, 1);
+    width: 32px;
+    font-size: 2rem;
+}
+
+.cart__action {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart__action .btn-2 {
+    color: var(--primary-color);
+    background-color: white;
+    border: 3px solid var(--primary-color);
+}
+
+.cart__action .btn-2:hover {
+    color: white;
+    background-color: var(--primary-color);
+}
+.btn-handle{
+    padding: 15px 17px;
+    font-size: 2rem;
+    font-weight: 900;
+    border: none;
+    border-radius: 50%;
+}
+.cart__choose{
+    width: 20px;
+    height: 20px;
+}
+/* Summary */
+.cart__summary {
+    margin-top: 50px;
+}
+
+.cart__coupon {
+    padding-right: 150px;
+}
+
+.cart__coupon input {
+    padding: 0 40px;
+    font-size: 1.8rem;
+    border-radius: 0 0 0 999px;
+}
+
+.summary__box {
+    padding: 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+}
+.summary__box-title {
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.summary__item-text{
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 28px;
+}
+.summary__item-text--small{
+    font-weight: 400;
+}
+.summary__item {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+}
+.summary__action{
+    margin-top: 30px;
+    display: flex;
+}
+.summary__box .btn{
+    display: inline-block;
+    margin-left: auto;
+}
