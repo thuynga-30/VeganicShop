@@ -5,6 +5,7 @@
 
 .cart {
     padding: 150px 0;
+    overflow-x: auto;
 
 }
 
@@ -55,28 +56,6 @@
 .cart__number-box {
     display: flex;
     align-items: center;
-    gap:10px; /* Khoảng cách giữa input và nút */
-}
-.cart__number-box input {
-    width: 60px; /* Đặt chiều rộng cố định cho ô input */
-    height: 40px; /* Căn chỉnh chiều cao */
-    border: 1px solid #ddd; /* Đường viền nhẹ nhàng */
-    border-radius: 5px; /* Góc bo tròn */
-    text-align: center; /* Căn giữa chữ số */
-}
-
-.cart__number-box button {
-    background-color: #007bff; /* Màu xanh chuẩn Bootstrap */
-    color: #fff; /* Màu chữ trắng */
-    border: none; /* Bỏ viền */
-    padding: 8px 12px; /* Tạo kích thước nút cân đối */
-    border-radius: 5px; /* Bo tròn góc nút */
-    cursor: pointer; /* Con trỏ dạng bàn tay khi hover */
-    transition: all 0.3s ease; /* Hiệu ứng khi hover */
-}
-
-.cart__number-box button:hover {
-    background-color: #0056b3; /* Màu tối hơn khi hover */
 }
 
 .cart__number {
@@ -127,18 +106,21 @@
     color: white;
     background-color: var(--primary-color);
 }
-.btn-handle{
+
+.btn-handle {
     padding: 15px 17px;
     font-size: 2rem;
     font-weight: 900;
     border: none;
     border-radius: 50%;
 }
-.cart__choose{
+
+.cart__choose {
     width: 20px;
     height: 20px;
 }
-/* Summary */
+
+/* Summary
 .cart__summary {
     margin-top: 50px;
 }
@@ -186,4 +168,4 @@
 .summary__box .btn{
     display: inline-block;
     margin-left: auto;
-}
+} */

@@ -90,44 +90,20 @@
                                         <div class="cart__number-box form-group">
                                             <input type="text" class="form-control text-center cart__number" value="{{ $item->quantity }}" name="quantity">      
                                         </div>
-                                        
-                                    
                                     </td>
                                     <td>${{$item->price}}</td>
                                     
-                                </tr>
-                                    
+                                </tr>                                    
                                 @endforeach
                             </tr>
-                                    {{-- @foreach ($cart as $item)
-                                    <tr>
-                                        <td>
-                                            <div class="cart__product">
-                                                <figure class="cart__img-wrap">
-                                                    <img src="/assets/img/{{ $item->prod->image }}" alt="" class="cart__img">
-                                                </figure>
-                                                
-                                            </div>
-                                        </td>
-                                        <td><h3 class="cart__product-title">{{$item->prod->name  }}</h3></td>
-                                      
-                                        <td>{{ $item->prod->price}}</td>
-                                        
-                                        <td>
-                                           
-                                            <div class="cart__number-box form-group">
-                                                <input type="text" class="form-control text-center cart__number" value="{{ $item->quantity }}" name="quantity">      
-                                            </div>
-                                            
-                                        
-                                        </td>
-                                        <td>${{$item->price}}</td>
-                                        
-                                    </tr>
-                                    @endforeach
-                               
-                                <tr> --}}
-
+                                @php
+                                    $total = 0;
+                                    foreach ($cart as $item) {
+                                        if ($item->status == 1) { 
+                                            $total += $item->price;
+                                        }
+                                    }
+                                @endphp
                                     <td class=""></td>
                                     <td class=""></td>
                                     <td class=""></td>
@@ -136,17 +112,10 @@
                                     </td>
                                     <td class="">
                                         <div class="">
-                                            <p class="mb-0 text-dark">$135.00</p>
+                                            <p class="mb-0 text-dark">${{ $total }}</p>
                                         </div>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td class=""></td>
-                                    <td class=""></td>
-                                    <td class=""></td>
-                                    <td colspan="2">
-                                    </td>
-                                </tr>
+                               
                             </tbody>
                         </table>
                     

@@ -1,5 +1,4 @@
 // Hiển thị modal và điền dữ liệu sản phẩm cần chỉnh sửa
-// Hiển thị modal và điền dữ liệu sản phẩm cần chỉnh sửa
 document.querySelectorAll('.edit-btnpm').forEach(button => {
   button.addEventListener('click', (event) => {
     const row = event.target.closest('tr');
@@ -16,7 +15,7 @@ document.querySelectorAll('.edit-btnpm').forEach(button => {
     document.getElementById('editName').value = name;
     document.getElementById('editOrigin').value = origin;
     document.getElementById('editPrice').value = price;
-    document.getElementById('editWeight').value = quantity;
+    document.getElementById('editWeight').value = weight;
     document.getElementById('editDescBasic').value = descBasic;
     document.getElementById('editDescDetailed').value = descDetailed;
 
@@ -24,20 +23,7 @@ document.querySelectorAll('.edit-btnpm').forEach(button => {
     document.getElementById('editModal').classList.remove('hidden');
   });
 });
-function openEditPopup(button) {
-  const product = JSON.parse(button.getAttribute('data-product'));
 
-  // Điền thông tin vào form modal
-  document.getElementById('editName').value = product.name;
-  document.getElementById('editOrigin').value = product.origin;
-  document.getElementById('editPrice').value = product.price;
-  document.getElementById('editWeight').value = product.quantity;
-  document.getElementById('editDescBasic').value = product.basic_des;
-  document.getElementById('editDescDetailed').value = product.description;
-
-  // Hiển thị modal
-  document.getElementById('editModal').classList.remove('hidden');
-}
 // Đóng modal
 function closeModal() {
   document.getElementById('editModal').classList.add('hidden');
@@ -53,4 +39,3 @@ document.getElementById('editForm').addEventListener('submit', (event) => {
   // Đóng modal sau khi cập nhật xong
   closeModal();
 });
-

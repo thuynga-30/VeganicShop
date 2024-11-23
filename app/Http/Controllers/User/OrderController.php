@@ -11,8 +11,6 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function order(){
-       
-        
             $user = auth()->user();
             $cart = Cart::where('user_id', $user->id)->with('product')->get();
             $selectedItems = Cart::where('user_id', $user->id)
@@ -32,6 +30,16 @@ class OrderController extends Controller
                 'selectedItems' => $selectedItems,
                 
             ]);
+    }
+    //detail
+    public function orderDetail(Order $order){
+        $auth = auth()->user();
+        
+        return view('main.shop.order_detail',[
+            'title' => 'Order Detail',
+            'auth' => $auth,
+            'order' => $order,
+        ]);
     }
     public function checkout(Request $request){
         $user = auth()->user();
@@ -67,6 +75,7 @@ class OrderController extends Controller
             }
         
     }
+    
     // public function order(){
        
     //     $user = auth()->user();

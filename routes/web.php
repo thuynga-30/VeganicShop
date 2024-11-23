@@ -68,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/cart', [CartController::class, 'cart'])->name('cart.cart');
         Route::get('/cart/add/{product}', [CartController::class, 'add_cart'])->name('cart.add');
         Route::get('/cart/delete/{product}', [CartController::class, 'delete_cart'])->name('cart.delete');
-        Route::get('/cart/update/{product_id}', [CartController::class, 'update_cart'])->name('cart.update');
+        Route::get('cart/update/{product}', [CartController::class, 'update_cart'])->name('cart.update');
         Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
         Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
       });
@@ -76,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('order')->group(function () {
       Route::get('/order', [OrderController::class, 'order'])->name('order.order');
       Route::post('/order/checkout', [OrderController::class, 'checkout'])->name('order.checkout');
+      Route::get('/order/detail/{order}', [OrderController::class, 'orderDetail'])->name('order.detail');
     });
 
 

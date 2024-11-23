@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Order;
 use Illuminate\Http\Request;
 //Product
 use App\Models\Product;
@@ -12,18 +13,22 @@ class CartController extends Controller
 {
      //cart
      public function cart(){
-        $user = auth()->user();
-        if (!$user) {
+        $auth = auth()->user();
+
+        if (!$auth) {
             return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để xem giỏ hàng.');
         }
 
-        $cart = Cart::where('user_id', $user->id)->with('product')->get();
-
+        $cart = Cart::where('user_id', $auth->id)->with('product')->get();
+        // $orders = Order::where('user_id', $auth->id)->get();
         // return view('cart.index', compact('cart'));
         // $cart= Cart::orderBy('created_at','ASC')->get();
         return view('main.shop.cart',[
-            'title' => 'Cart'
-            ],compact('cart'));
+            'title' => 'Cart',
+            'auth' => $auth,
+            'cart' => $cart,
+            // 'orders' => $orders
+            ]);
     }
     //add_cart
     public function add_cart(Product $product,Request $request){

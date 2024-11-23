@@ -25,27 +25,34 @@ class ProductController extends Controller
         ]);
     }
     //search
-    public function search(Request $request)
-{
-    $query = Product::query();
+    public function search(Request $request){
 
-    // Filter by product name
-    if ($request->filled('name')) {
-        $query->where('name', 'like', '%' . $request->input('product_name') . '%');
+       
+    
+        // Lấy dữ liệu từ request
+        $searchName = $request->input('search_name');
+        $searchType = $request->input('search_type');
+        $searchOrigin = $request->input('search_origin');
+    
+        // Query sản phẩm
+        $query = Product::query();
+    
+        // Nếu có tìm kiếm, thêm điều kiện vào query
+        if ($searchName) {
+            $query->where('name', 'LIKE', "%$searchName%");
+        }
+        if ($searchType) {
+            $query->where('category_id', $searchType);
+        }
+        if ($searchOrigin) {
+            $query->where('origin', $searchOrigin);
+        }
+        $product = $query->paginate(12); 
+       
+        return view('main.shop.search',[
+            'title' => 'Product',
+            'product' => $product,
+        ]);
+
     }
-
-    // Filter by product origin
-    if ($request->filled('origin')) {
-        $query->where('origin', $request->input('product_origin'));
-    }
-
-    // Get the filtered products
-    $products = $query->get();
-
-    // Return the search results to the view
-    return view('main.shop.product',[
-    'title' => 'Product',
-    'products' => $products,
-    ]);
-}
 }

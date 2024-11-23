@@ -35,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
             //  $users = User::orderBy('id','ASC')->get(); 
             $users = User::where('role', 'user')->get();
             $origins = Product::select('origin')->distinct()->get();
+            
             $view->with(compact('cats','products','users','origins'));
 
         });

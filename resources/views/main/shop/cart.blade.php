@@ -67,7 +67,7 @@
                                     @csrf
                                      <div class="cart__number-box form-group">
                                     <input type="number" class="form-control text-center cart__number" value="{{ $item->quantity }}" name="quantity">      
-                                    <button><i class="fa fa-save"></i></button>
+                                    <button type="submit"><i class="fa fa-save"></i></button>
                                 </div>
                             </form>
                             </td>
@@ -91,7 +91,49 @@
                     <button type="submit" class="btn btn-2">Check Out</button>               
                  </div>            
             </form>
-               
+            </div>
+
+                <div class="container">
+            <div class="history-header">
+                <h2 class="history-title">History</h2>
+            </div>
+            <table class="table cart__table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>OrderDate</th>
+                        <th>Status</th>
+                        <th>Subtotal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($auth->orders as $item)
+                    <tr>
+                        <td scope='row'>{{ $loop->index+1 }} </td>
+                        <td>
+                            <div class="cart__product">
+                                {{ $item->created_at->format('d/m/Y') }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cart__product">
+                                <span>Đã mua</span>
+                            </div>
+                        </td>
+                        {{-- <td><h3 class="cart__product-title">{{$item->name  }}</h3></td> --}}
+                            <td>$ {{ number_format($item->totalPrice)}}.000</td>
+        
+                        <td>
+                            <a href="{{ route('order.detail',$item->id) }}" class="btn btn-sm btn-primary">Detail</a>
+                        </td>
+                        </form>
+                        
+                    
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
             </div>
         </section>
     </main>

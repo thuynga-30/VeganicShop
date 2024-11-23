@@ -32,6 +32,8 @@
             <div class="container">
                 <div class="product-detail__inner">
                     <div class="row">
+                        <form action="{{ route('cart.add',$product->id) }}" method="get">
+                            @csrf
                         <div class="col-9">
                             <div class="product-detail__content">
                                 <div class="row">
@@ -80,12 +82,12 @@
                                                     100000g
                                                 </span>
                                             </div>
-                                            <form action="cart.add" method="get">
+                                            
                                             <div class="product-detail__action">
                                                 <div class="product-detail__number-box form-group">
                                                   
                                                     <input type="number"
-                                                        class="form-control text-center product-detail__number">
+                                                        class="form-control text-center product-detail__number" name="quantity" value="1">
                                                   
                                                 </div>
                                                 <button class="product-detail__btn-action btn btn-2"><i

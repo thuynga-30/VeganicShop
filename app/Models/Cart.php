@@ -16,6 +16,7 @@ class Cart extends Model
         'product_id',
         'quantity',
         'price',
+        'status',
     ];
     public function prod(){
         return $this->hasOne(Product::class,'id','product_id');

@@ -2,11 +2,13 @@
 .contact {
     padding: 180px 0 0;
 }
-.contact__info{
+
+.contact__info {
     padding: 30px 20px;
     background-color: wheat;
     border-radius: 10px;
 }
+
 .contact__top {
     margin-bottom: 30px;
 }
@@ -42,20 +44,25 @@
 .contact__text span {
     font-weight: 600;
 }
-.contact__item{
+
+.contact__item {
     padding: 10px 30px;
     color: var(--primary-color);
-    background-color: white;border-radius: 10px;
+    background-color: white;
+    border-radius: 10px;
     transition: all .5s ease;
 }
-.contact__item:hover{
+
+.contact__item:hover {
     color: white;
     background-color: var(--primary-color);
 }
-.contact__item i{
+
+.contact__item i {
     font-size: 3rem;
     color: currentColor;
 }
+
 .contact__link {
     color: black;
     transition: all .5s ease;
@@ -65,11 +72,13 @@
     font-weight: 600;
     transition: all .5s ease;
 }
-.contact__social{
+
+.contact__social {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .contact textarea,
 .contact input {
     margin-bottom: 20px;
@@ -97,6 +106,7 @@
     width: 100%;
     padding-bottom: 50px;
 }
+
 .contact__social {
     display: flex;
     align-items: center;

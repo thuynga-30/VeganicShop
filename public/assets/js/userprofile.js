@@ -1,6 +1,6 @@
 // Chuyển chế độ sang chỉnh sửa
 function enableEditing() {
-  document.querySelectorAll('.infor, .sel, .tar').forEach(field => {
+  document.querySelectorAll('input, select, textarea').forEach(field => {
     field.removeAttribute('readonly');
     field.disabled = false;
   });
@@ -13,12 +13,12 @@ function enableEditing() {
 
 // Hủy chỉnh sửa, quay về trạng thái đọc
 function cancelEditing() {
-  document.querySelectorAll('.infor, .sel, .tar').forEach(field => {
+  document.querySelectorAll('input, select, textarea').forEach(field => {
     field.setAttribute('readonly', true);
     field.disabled = true;
   });
+  // 'infor, sel, tar'
 
-  // Hiện nút Edit, ẩn nút Save và Cancel
   document.querySelector('.edit-btnprf').classList.remove('hiddenprf');
   document.querySelector('.save-btnprf').classList.add('hiddenprf');
   document.querySelector('.cancel-btnprf').classList.add('hiddenprf');
@@ -38,9 +38,8 @@ function togglePassword() {
 document.getElementById('profileForm').addEventListener('submit', function(event) {
   event.preventDefault();
 
-  // Giả lập lưu thông tin
+  // Thực hiện lưu thông tin (giả sử lưu qua API hoặc backend)
   alert("Profile saved successfully!");
 
-  // Quay lại chế độ chỉ đọc
   cancelEditing();
 });

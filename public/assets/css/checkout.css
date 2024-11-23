@@ -1,5 +1,6 @@
 .checkout {
     padding: 150px 0;
+    overflow-x: auto;
 }
 
 .checkout__title {
@@ -27,16 +28,20 @@
     align-items: center;
     gap: 15px;
 }
-.check__mess{
+
+.check__mess {
     margin-top: 20px;
     font-size: 1.8rem;
 }
-.cart__table{
+
+.cart__table {
     width: 100%;
 }
-.form-check-input{
+
+.form-check-input {
     background-color: var(--primary-color);
 }
-.form-check-input:checked{
+
+.form-check-input:checked {
     background-color: var(--primary-color);
 }
