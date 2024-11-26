@@ -9,16 +9,16 @@
                         </h3>
                         <ul class="footer__list">
                             <li class="footer__item">
-                                <a href="" class="footer__link">Home</a>
+                                <a href="{{ route('index') }}" class="footer__link">Home</a>
                             </li>
                             <li class="footer__item">
-                                <a href=" " class="footer__link">About</a>
+                                <a href="{{ route('about') }} " class="footer__link">About</a>
                             </li>
                             <li class="footer__item">
-                                <a href=" " class="footer__link">Product</a>
+                                <a href="{{ route('contact') }} " class="footer__link">Product</a>
                             </li>
                             <li class="footer__item">
-                                <a href=" " class="footer__link">Cart</a>
+                                <a href="{{ route('cart.cart') }} " class="footer__link">Cart</a>
                             </li>
                         </ul>
                     </div>
@@ -56,4 +56,3 @@
 <!-- Bootstrap-->
 <!-- JS -->
 
-<script src="/assets/js/app.js"></script>

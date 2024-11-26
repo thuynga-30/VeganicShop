@@ -17,7 +17,7 @@
                         <!-- Logo -->
                         <img src="assets/img/logo4.png" alt="" class="logo">
                         <!-- Navbar -->
-                        @include('main.shop.navbar')
+                        @include('main.navbar')
 
                     </div>
                 </div>
@@ -29,14 +29,14 @@
             <div class="search__form-group">
                 <form action="{{ route('search') }}" method="GET">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-lg-3 col-6">
                             <div class="form-group">
                                 <label for="search__location" class="search__label">Product Name</label>
                                 <input type="text" name="search_name" id="search__location"
                                     class="search__location form-control" placeholder="Search for name...">
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-6">
                             <div class="form-group">
                                 <label for="search__type" class="search__label">Product Type</label>
                                 <select name="search_type" id="search__type" class="search__select form-control">
@@ -47,7 +47,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-12">
                             <div class="form-group">
                                 <label for="search__duration" class="search__label">Product Origin</label>
                                 <select name="search_origin" id="search__duration"
@@ -59,7 +59,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-12">
                             <div class="form-group">
                                 <button type="submit" class="btn btn-2 search__btn">Search</button>
                             </div>
@@ -81,7 +81,7 @@
                 <div class="row">
                     
                     @foreach ($product as $prod)
-                        <div class="col">
+                        <div class="col-lg-3 col-6">
                             <div class="product__item">
                                 <a href="{{ route('details',$prod->id) }}">
                                 <figure class="product__img-wrap">
@@ -131,6 +131,8 @@
     crossorigin="anonymous"></script>
 <!-- JS -->
 @include('main.footer')
+<script src="/assets/js/app.js"></script>
+<script src="/assets/js/cart.js"></script>
 </body>
 
 </html>

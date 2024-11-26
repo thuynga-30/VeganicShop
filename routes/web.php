@@ -31,19 +31,21 @@ Route::post('/check-reset/{token}', [AccountController::class, 'Check_resetPass'
 Route::middleware(['auth'])->group(function () {
   Route::prefix('admin')->group(function(){
     Route::get('/admin', [AdminController::class, 'admin'])->name('admin.admin');
+
     Route::get('/admin/user_manager', [AdminController::class, 'user_manager'])->name('admin.user_manager');
-    //add_user
     Route::post('/admin/add_user', [AdminController::class, 'add_user'])->name('admin.add_user');
-    Route::post('/admin/user_manager/update/{id}', [AdminController::class, 'update_user'])->name('admin.update_user');
+    Route::get('/admin/user_manager/edit/{id}', [AdminController::class, 'edit_user'])->name('admin.edit_user');
+    Route::post('/admin/user_manager/update/{id}', [AdminController::class, 'updateUser'])->name('admin.update_user');
     Route::post('/admin/user_manager/delete/{user}', [AdminController::class, 'user_delete'])->name('admin.delete_user');
 
     Route::get('/admin/product_manager', [AdProductController::class, 'product_manager'])->name('admin.product_manager');
     Route::post('/admin/add_product', [AdProductController::class, 'save_product'])->name('admin.add_product');
-    Route::get('/admin/edit_manager/{$id}', [AdProductController::class, 'edit_manager'])->name('admin.edit');
-
+    Route::get('/admin/product_manager/edit/{product}', [AdProductController::class, 'product_edit'])->name('admin.edit_product');
     Route::post('/admin/product_manager/update/{product}', [AdProductController::class, 'update_product'])->name('admin.update_product');
     Route::post('/admin/product_manager/delete/{product}', [AdProductController::class, 'product_delete'])->name('admin.delete_product');
-    Route::get('/admin/order_manager', [AdminController::class, 'order_manager'])->name('admin.order_manager');
+
+    Route::get('/admin/order_manager', [AdProductController::class, 'order_manager'])->name('admin.order_manager');
+    Route::post('/admin/order_manager/delete/{order}', [AdProductController::class, 'order_delete'])->name('admin.delete_order');
   });
     Route::get('/logout', [MainController::class, 'logout'])->name('logout');
     Route::get('/profile', [MainController::class, 'profile'])->name('profile');
@@ -58,7 +60,6 @@ Route::middleware(['auth'])->group(function () {
     //product
     Route::get('/product', [ProductController::class, 'product'])->name('product');
     Route::get('/product/{product}', [ProductController::class, 'product_details'])->name('details');
-    Route::get('/product/{product}/add-to-cart', [ProductController::class, 'add_to_cart'])->name('add_to_cart');
     //search
     Route::get('/search', [ProductController::class, 'search'])->name('search');
     // Route::get('/search/{search}', [ProductController::class, 'search_product'])->name('search_product');

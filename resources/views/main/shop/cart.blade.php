@@ -19,7 +19,7 @@
                         <!-- Logo -->
                         <img src="../assets/img/logo4.png" alt="" class="logo">
                         <!-- Navbar -->
-                        @include('main.shop.navbar')
+                        @include('main.navbar')
 
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                                     @csrf
                                      <div class="cart__number-box form-group">
                                     <input type="number" class="form-control text-center cart__number" value="{{ $item->quantity }}" name="quantity">      
-                                    <button type="submit"><i class="fa fa-save"></i></button>
+                                    <button><i class="fa fa-save"></i></button>
                                 </div>
                             </form>
                             </td>
@@ -134,6 +134,7 @@
                     @endforeach
                 </tbody>
             </table>
+            
             </div>
         </section>
     </main>
@@ -146,6 +147,8 @@
         crossorigin="anonymous"></script>
     <!-- JS -->
     @include('main.footer')
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/cart.js"></script>
 </body>
 
 </html>

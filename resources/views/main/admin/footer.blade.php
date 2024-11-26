@@ -1,4 +1,3 @@
-
 <footer class="footer">
     <div class="container">
         <div class="footer__inner">
@@ -10,23 +9,23 @@
                         </h3>
                         <ul class="footer__list">
                             <li class="footer__item">
-                                <a href="./adminhome.html" class="footer__link">Home</a>
+                                <a href="{{ route('admin.admin') }}" class="footer__link">Home</a>
                             </li>
                             <li class="footer__item">
-                                <a href="user-manager.html" class="footer__link">User Manager</a>
+                                <a href="{{ route('admin.user_manager') }}" class="footer__link">User Manager</a>
                             </li>
                             <li class="footer__item">
-                                <a href="product-manager.html" class="footer__link">Product Manager</a>
+                                <a href="{{ route('admin.product_manager') }}" class="footer__link">Product Manager</a>
                             </li>
                             <li class="footer__item">
-                                <a href="order-manager.html" class="footer__link">Order Manager</a>
+                                <a href="{{ route('admin.order_manager') }}" class="footer__link">Order Manager</a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-5">
                     <figure class="footer__logo-wrap">
-                        <img src="../assets/img/logoVG.png" alt="" class="footer__logo">
+                        <img src="/assets/img/logoVG.png" alt="" class="footer__logo">
                     </figure>
                 </div>
                 <div class="col-4">
@@ -58,4 +57,4 @@
 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 crossorigin="anonymous"></script>
 <!-- JS -->
-<script src="../assets/js/app.js"></script>
+<script src="/assets/js/app.js"></script>

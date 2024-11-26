@@ -55,3 +55,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+
+function toggleDropdown() {
+    // Lấy phần tử menu dropdown
+    const dropdown = document.getElementById("dropdownMenu");
+
+    // Thêm hoặc xóa class "show" để hiển thị/ẩn menu
+    if (dropdown.classList.contains("show")) {
+        dropdown.classList.remove("show"); // Ẩn menu
+    } else {
+        dropdown.classList.add("show"); // Hiển thị menu
+    }
+}
+
+// Đóng menu dropdown khi nhấp bên ngoài
+window.onclick = function (event) {
+    // Nếu không nhấp vào nút dropdown
+    if (!event.target.matches('.dropdown-btn')) {
+        const dropdown = document.getElementById("dropdownMenu");
+        dropdown.classList.remove("show"); // Đóng menu
+    }
+};

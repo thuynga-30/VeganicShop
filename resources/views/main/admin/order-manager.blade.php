@@ -18,7 +18,7 @@
                         <!-- Logo -->
                         <img src="/assets/img/logo4.png" alt="" class="logo">
                         <!-- Navbar -->
-                        @include('main.admin.navbar')
+                        @include('main.navbar')
                     </div>
                 </div>
             </div>
@@ -31,12 +31,12 @@
       <!-- Statistic Boxes -->
       <div class="stat-container">
         <div class="stat-box">
-          <h3 class="s-title">Orders Today</h3>
-          <p id="ordersToday">0</p>
+          <h3 class="s-title">Orders This Week</h3>
+          <p >{{ $orderCount }}</p>
         </div>
         <div class="stat-box">
-          <h3 class="s-title">Revenue Today</h3>
-          <p id="revenueToday">$0.00</p>
+          <h3 class="s-title">Revenue This Week</h3>
+          <p id="revenueToday">${{ $totalRevenueToday }}</p>
         </div>
       </div>
   
@@ -50,36 +50,40 @@
               <th>Email</th>
               <th>Phone</th>
               <th>Address</th>
-              <th>Product Image</th>
-              <th>Product Name</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Subtotal</th>
-              <th>Actions</th>
+              <th>Purchase Date</th>
+              <th>Total</th>
             </tr>
           </thead>
           <tbody>
             <!-- Sample Order Row -->
+            @foreach ($oders as $item)
             <tr>
-              <td>John Doe</td>
-              <td>Male</td>
-              <td>john.doe@example.com</td>
-              <td>+1234567890</td>
-              <td>123 Street, City</td>
-              <td><img src="path/to/product.jpg" alt="Product Image"></td>
-              <td>Sample Product</td>
-              <td>$50.00</td>
-              <td>2</td>
-              <td>$100.00</td>
+              <td>{{ $item->name }}</td>
+              <td>{{ $item->gender }}</td>
+              <td>{{ $item->email }}</td>
+              <td>{{ $item->phone }}</td>
+              <td>{{ $item->address }}</td>
+              <td>{{ $item->created_at->format('d/m/Y') }}</td>
+              <td>${{ $item->totalPrice }}</td>
               <td>
+                <a href="{{ route('order.detail',$item->id) }}" class="btn-um save-btnum">Detail</a>
+                <form action="{{ route('admin.delete_order',$item->id) }}" method="POST" >
+                  @csrf
                 <button class="delete-button" onclick="confirmDeleteOrder()">🗑️ Delete</button>
+                </form>
               </td>
             </tr>
+            @endforeach
             <!-- Additional orders should go here -->
           </tbody>
         </table>
+       
       </div>
-    </div>
+      <div >
+        {{ $oders->links() }}
+          </div>
+      </div>
+    
   <!-- End Main -->
     <!-- Footer -->
     
@@ -88,6 +92,8 @@
     @include('main.admin.footer')
 
     <script src="/assets/js/order-manager.js"></script>
+    <script src="/assets/js/cart.js"></script>
+
 </body>
 
 </html>

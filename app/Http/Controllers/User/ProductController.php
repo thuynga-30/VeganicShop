@@ -10,14 +10,15 @@ class ProductController extends Controller
 {
     
     public function product(){
-        
+        $page= Product::paginate(3);
         return view('main.shop.product',[
             'title' => 'Product',
             
-        ]);
+        ],compact('page'))->with('i',(request()->input('page',1)-1)*5);
     }
     public function product_details(Product $product) {
         $randomProducts = Product::inRandomOrder()->limit(4)->get();
+
         return view('main.shop.product-detail', [
             'title' => 'Product Details',
             'product' => $product, // Dữ liệu của sản phẩm
@@ -27,8 +28,6 @@ class ProductController extends Controller
     //search
     public function search(Request $request){
 
-       
-    
         // Lấy dữ liệu từ request
         $searchName = $request->input('search_name');
         $searchType = $request->input('search_type');

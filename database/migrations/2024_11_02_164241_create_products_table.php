@@ -18,7 +18,10 @@ class CreateProductsTable extends Migration
             $table->string('name',100)->unique();
             $table->string('image',100);
             $table->float('price',10,2);
-            $table->text('content');
+            $table->string('origin',100);
+            $table->int('quantity');
+            $table->text('basic_des');
+            $table->text('description');
             $table->unsignedBigInteger('category_id');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();

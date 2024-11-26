@@ -88,3 +88,31 @@ function refreshUserTable() {
 function closePopup() {
   document.getElementById('profilePopup').classList.add('hidden-um');
 }
+
+
+
+function onEditUserClick() {
+  const { id, name, email, phone,dob,address,gender } = $(this).data();
+
+  $('#editUserModal').find('#edit-user-id').val(id);
+  $('#editUserModal').find('#edit-name').val(name);
+  $('#editUserModal').find('#edit-email').val(email);
+  $('#editUserModal').find('#edit-phone').val(phone);
+  $('#editUserModal').find('#edit-dob').val(dob);
+  $('#editUserModal').find('#edit-address').val(address);
+  $('#editUserModal').find('#edit-gender').val(gender);
+  $('#editUserForm').attr('action', `/admin/users/${id}`);
+  $('#editUserModal').modal('show');
+}
+function togglePassword(icon) {
+  const passwordField = document.getElementById('password');
+  const isPassword = passwordField.type === 'password';
+
+  // Thay đổi type của input
+  passwordField.type = isPassword ? 'text' : 'password';
+
+  // Thay đổi class của icon
+  const iconClass = icon.querySelector('i');
+  iconClass.classList.toggle('fa-eye-slash', !isPassword);
+  iconClass.classList.toggle('fa-eye', isPassword);
+}

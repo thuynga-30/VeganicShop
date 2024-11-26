@@ -24,8 +24,7 @@ class CreateUsersTable extends Migration
             //address
             $table->string('address');
             //gender
-            $table->enum('gender', ['male', 'female'])->default('male');
-            
+            $table->enum('gender', ['male', 'female'])->default('male');     
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

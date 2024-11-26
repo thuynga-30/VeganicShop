@@ -20,7 +20,7 @@
                         <!-- Logo -->
                         <img src="../assets/img/logo4.png" alt="" class="logo">
                         <!-- Navbar -->
-                       @include('main.shop.navbar')
+                       @include('main.navbar')
                     </div>
                 </div>
             </div>
@@ -33,10 +33,28 @@
         <section class="checkout">
             <div class="container">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-lg-6">
                         <h1 class="checkout__title section-title">Billing details</h1>
                         <form action="{{ route('order.checkout') }}" method="post"> 
                             @csrf
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group checkout__item">
+                                        <label class="checkout__label">Mobile<sup>*</sup></label>
+                                        <input type="text" class="form-control checkout__input" name="phone" value="{{ $user->phone }}">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group checkout__item">
+                                    <label class="checkout__label" for="gender">Gendere<sup>*</sup></label>
+                                    <select class="form-control checkout__input" id="gender" name="gender"  >
+                                        <option value="male" {{$user->gender =='male' ? 'selected': '' }}>Male</option>
+                                        <option value="female"{{$user->gender =='female' ? 'selected': '' }}>Female</option>
+                                        {{-- <option value="other">Other</option> --}}
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group checkout__item">
                                 <label class="checkout__label">Full Name<sup>*</sup></label>
                                 <input type="text" class="form-control checkout__input" name="name" value="{{ $user->name }}">
@@ -47,10 +65,7 @@
                                 <input type="text" class="form-control checkout__input" placeholder="Address" name="address" value="{{ $user->address }}">
                             </div>
                             
-                            <div class="form-group checkout__item">
-                                <label class="checkout__label">Mobile<sup>*</sup></label>
-                                <input type="text" class="form-control checkout__input" name="phone" value="{{ $user->phone }}">
-                            </div>
+                            
                             <div class="form-group checkout__item">
                                 <label class="checkout__label">Email Address<sup>*</sup></label>
                                 <input type="email" class="form-control checkout__input" name="email" value="{{ $user->email }}">
@@ -59,7 +74,7 @@
 
                         </form>
                     </div>
-                    <div class="col-6">
+                    <div class="col-lg-6">
                         <table class="table cart__table">
                             <thead>
                                 <tr>
@@ -135,6 +150,8 @@
         crossorigin="anonymous"></script>
     <!-- JS -->
     @include('main.footer')
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/cart.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,30 @@
-<nav class="navbar">
+<div class="navbar__toggle">
+    <i class="fas fa-bars"></i> <!-- Hamburger menu icon -->
+</div>
+
+ @if  (Auth::check() && Auth::user()->role == "admin")
+ <nav class="navbar">
+     <ul class="navbar__list">
+         <li class="navbar__item">
+             <a href="{{ route('admin.admin') }}" class="navbar__link">Home</a>
+         </li>
+         <li class="navbar__item">
+             <a href="{{ route('admin.user_manager') }}" class="navbar__link">User Manager</a>
+         </li>
+         <li class="navbar__item">
+             <a href="{{ route('admin.product_manager') }}" class="navbar__link">Product Manager</a>
+         </li>
+         <li class="navbar__item">
+             <a href="{{ route('admin.order_manager') }}" class="navbar__link">Order Manager</a>
+         </li>
+         <li class="navbar__item">
+             <a href="{{ route('logout') }}" class="navbar__link">LogOut</a>
+         </li>
+     </ul>
+ </nav>
+     
+ @else
+ <nav class="navbar">
     <ul class="navbar__list">
         @guest
         <li class="navbar__item">
@@ -52,11 +78,12 @@
                     <li><a href="{{ route('logout') }}">Logout</a> </li>
                    </ul>
                 </div>
+            </div>
             </ul> 
             @endauth
+        
     </ul >
     
-   
-        </div>
-    
 </nav>
+ @endif
+

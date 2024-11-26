@@ -1,10 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-   @include('main.header')
-
+    @include('main.header')
 </head>
 
 <body>
@@ -17,9 +15,7 @@
                     <div class="header__top-inner">
                         <!-- Logo -->
                         <img src="/assets/img/logo4.png" alt="" class="logo">
-                        <!-- Navbar -->
-                        
-                        @include('main.shop.navbar')
+                       @include('main.navbar')
                     </div>
                 </div>
             </div>
@@ -46,7 +42,7 @@
             <div class="container">
                 <div class="about__inner">
                     <div class="row">
-                        <div class="col-5">
+                        <div class="col-lg-5 col-12">
                             <div class="about__content">
                                 <p class="section__desc-heading about__heading-desc">
                                     About Us
@@ -59,10 +55,10 @@
                                     pariatur, et nesciunt mollitia architecto quasi non ea delectus qui vero excepturi
                                     illum veniam error. Libero ex incidunt aliquid minus!
                                 </p>
-                                <a href="" class="about__action btn btn-2">View More</a>
+                                <a href="{{ route('about') }}" class="about__action btn btn-2">View More</a>
                             </div>
                         </div>
-                        <div class="col-7">
+                        <div class="col-lg-7 col-12">
                             <figure class="about__media">
                                 <img src="/assets/img/about-img.png" alt="" class="about__img">
                                 <div class="about__decor">
@@ -79,7 +75,7 @@
         <!-- Our Products -->
         <section class="our-product">
             <div class="container">
-                <div class="our__product-top">
+                <div class="our-product__top">
                     <p class="section__desc-heading our-product__heading-desc">
                         Be Healthy
                     </p>
@@ -171,18 +167,22 @@
                 </div>
                 <div class="our-product__list">
                     <div class="row">
-                        @foreach ($products as $pro)
-                            
-                        <div class="col-4">
+                        @foreach ($randomProducts as $pro)
+                        <div class="col-lg-4 col-12">
                             <div class="our-product__item">
-                                <img src="/assets/img/{{ $pro->image }}" class="our-product__img" />
+                                <a href="{{ route('details',$pro->id) }}">
+                                <figure class="our-product__img-wrap">
+                                    <img src="/assets/img/{{ $pro->image }}" class="our-product__img" />
+                                </figure>
+                            </a>
                                 <div class="our-product__item-body">
                                     <div class="our-product__item-info">
                                         <h3 class="our-product__item-title">
                                             {{ $pro->name }}
                                         </h3>
+                                    
                                         <p class="our-product__item-heavy">
-                                            {{ $pro->price }}
+                                            $  {{ $pro->price }}/kg
                                         </p>
                                     </div>
                                     <div class="our-product__item-actions">
@@ -193,24 +193,19 @@
                                             <i class="fa-solid fa-star our-product__ratting-icon"></i>
                                             <i class="fa-solid fa-star our-product__ratting-icon"></i>
                                         </div>
-                                      
-                                        @if (auth()->check())
-                                                <a href="{{ route('details',$pro->id) }}" class="our-product__cart"><i
-                                                    class="fa-solid fa-cart-shopping navbar__link-icon"></i></a>                                                
-                                            @else
-                                                <a href="{{ route('login') }}" class="our-product__cart"><i
-                                                    class="fa-solid fa-cart-shopping navbar__link-icon"></i></a>                                                
-                                            @endif
-                                       
+                                        <a href="{{ route('details',$pro->id) }}" class="our-product__cart"> <i
+                                                class="fa-solid fa-cart-shopping navbar__link-icon"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         @endforeach
+                       
                     </div>
                 </div>
-                <div class="our__product-bot">
-                    <a href="" class="our__product-link btn btn-2">Show More</a>
+                <div class="our-product__bot">
+                    <a href="{{ route('product') }}" class="our-product__link btn btn-2">Show More</a>
                 </div>
             </div>
         </section>
@@ -235,7 +230,7 @@
             <div class="container">
                 <div class="confirm__inner">
                     <div class="row">
-                        <div class="col-7">
+                        <div class="col-lg-7 col-12">
                             <figure class="confirm__media">
                                 <img src="/assets/img/confirm-img.png" alt="" class="confirm__img">
                                 <img src="/assets/icon/about-decot-1.png" alt=""
@@ -243,7 +238,7 @@
                                 <img src="/assets/icon/header-icon.png" alt="" class="confirm__img-decor">
                             </figure>
                         </div>
-                        <div class="col-5">
+                        <div class="col-lg-5 col-12">
                             <div class="confirm__content">
                                 <p class="section__desc-heading confirm__desc-heading">Only Organic</p>
                                 <h2 class="section-title confirm__title">
@@ -276,10 +271,10 @@
                     </div>
                     <div class="comment__list-box">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-lg-4 col-12">
                                 <div class="comment__box">
-                                    <img src="/assets/img/a.png" alt="" class="comment__avt">
-                                    <h3 class="comment__name">Anh Thái depzai</h3>
+                                    <img src="/assets/img/person_4.jpg" alt="" class="comment__avt">
+                                    <h3 class="comment__name">Lisa</h3>
                                     <p class="comment__box-desc line-clamp">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore optio amet
                                         commodi
@@ -295,10 +290,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-lg-4 col-12">
                                 <div class="comment__box">
-                                    <img src="/assets/img/a.png" alt="" class="comment__avt">
-                                    <h3 class="comment__name">Anh Thái depzai</h3>
+                                    <img src="/assets/img/person_3.jpg" alt="" class="comment__avt">
+                                    <h3 class="comment__name">Peter</h3>
                                     <p class="comment__box-desc line-clamp">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore optio amet
                                         commodi
@@ -314,10 +309,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-lg-4 col-12">
                                 <div class="comment__box">
-                                    <img src="/assets/img/a.png" alt="" class="comment__avt">
-                                    <h3 class="comment__name">Anh Thái depzai</h3>
+                                    <img src="/assets/img/person-1.jpg" alt="" class="comment__avt">
+                                    <h3 class="comment__name">Loco</h3>
                                     <p class="comment__box-desc line-clamp">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore optio amet
                                         commodi
@@ -351,12 +346,12 @@
             <div class="container">
                 <div class="contact__inner">
                     <div class="row">
-                        <div class="col-7">
+                        <div class="col-lg-7 col-12">
                             <figure class="contact__media">
-                                <img src="/assets/img/about-img.png" alt="" class="contact__img">
+                                <img src="/assets/img/img-index/farm.png" alt="" class="contact__img">
                             </figure>
                         </div>
-                        <div class="col-5">
+                        <div class="col-lg-5 col-12">
                             <div class="contact__content">
                                 <p class="contact__desc">
                                     Contact Us
@@ -380,14 +375,14 @@
                                         <i class="fa-solid fa-location-dot"></i>
                                         <span class="contact__text">0705974995</span>
                                     </div>
-                                    <p class="contact__text">
-                                        ngaltt.23it@vku.udn.vn
+                                    <p class="contact__text contact__text--back">
+                                        veganicshopa@vku.udn.vn
                                     </p>
-                                    <p class="contact__text">
+                                    <p class="contact__text contact__text--back">
                                         Huỳnh Văn Nghệ
                                     </p>
                                 </div>
-                                <a href="{{ route('contact') }}" class="contact__action btn btn-2">Contact</a>
+                            <a href="{{ route('contact') }}" class="contact__action btn btn-2">Contact</a>
                             </div>
                         </div>
                     </div>
@@ -409,11 +404,9 @@
         <!-- End Media Section -->
     </main>
     <!-- Emd Main -->
-   
-    <!-- Bootstrap-->
-    <!-- JS -->
-
-    @include('main.footer')
+    <!-- Footer -->
+   @include('main.footer')
+   <script src="/assets/js/app.js"></script>
 </body>
 
 </html>

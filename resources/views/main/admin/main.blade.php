@@ -16,7 +16,7 @@
                         <!-- Logo -->
                         <img src="/assets/img/logo4.png" alt="" class="logo">
                         <!-- Navbar -->
-                        @include('main.admin.navbar')
+                        @include('main.navbar')
                     </div>
                 </div>
             </div>

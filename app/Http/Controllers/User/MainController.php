@@ -11,7 +11,7 @@ use App\Models\User;
 //contactmail
 use App\Mail\ContactMail;
 use App\Models\Product;
-use Illuminate\Support\Facades\Mail as FacadesMail;
+
 
 class MainController extends Controller
 {
@@ -19,10 +19,10 @@ class MainController extends Controller
         $this->middleware('auth',['except'=> ['index','about','product','logout']]);
     }
     public function index(){
-       
+        $randomProducts = Product::inRandomOrder()->limit(6)->get();
         return view('main.shop.index',[
             'title' => 'VeganicShop',
-           
+            'randomProducts' => $randomProducts,
         ]);
     }
    
@@ -86,7 +86,7 @@ class MainController extends Controller
     }
     //contact_store
     public function contact_store(Request $request)
-{
+    {
     // Validate the input data
     $request->validate([
         'name' => 'required',

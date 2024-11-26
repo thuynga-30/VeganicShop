@@ -6,6 +6,7 @@
  
     <link rel="stylesheet" href="/assets/css/product.css">
     <link rel="stylesheet" href="/assets/css/cart.css">
+    
 </head>
 
 <body>
@@ -19,7 +20,7 @@
                         <!-- Logo -->
                         <img src="/assets/img/logo4.png" alt="" class="logo">
                         <!-- Navbar -->
-                        @include('main.shop.navbar')
+                        @include('main.navbar')
                     </div>
                 </div>
             </div>
@@ -27,18 +28,25 @@
     </header>
     <!-- End Header -->
     <!-- Main -->
+    
     <main class="main">
         <!-- Cart -->
+        
         <section class="cart">
+            <h4 class="order-details-title">Order Details</h4>
             <div class="container">
                 <div class="row">
-                <div class="col-6">
+                <div class="col-lg-6 clo-12">
                 <h3 class="history-title">Thông tin khách hàng</h3>
                 <table class="table cart__table">
                     <thead>
                         <tr>
                             <th>Name</th>
                             <td>{{ $order->name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td>{{ $order->gender }}</td>
                         </tr>
                         <tr>
                             <th>Phone</th>
@@ -48,10 +56,11 @@
                             <th>Address</th>
                             <td>{{ $order->address }}</td>
                         </tr>
+                        
                     </thead>
                 </table>
             </div>
-                <div class="col-6">
+                <div class="col-lg-6 clo-12">
                         <h3 class="history-title">Thông tin đơn hàng</h3>
                     
                     <table class="table cart__table">
@@ -96,7 +105,12 @@
                     </table>
                     </div>
                     <div class="cart__action">
+                        @if (Auth::user()->role == "user")
                         <a href="{{ route('cart.cart') }}" class="btn btn-2">Return Back</a>
+                        @else
+                        <a href="{{ route('admin.order_manager') }}" class="btn btn-2">Return Back</a>
+                        @endif
+                        
                     </div>
             </section>
            
@@ -111,6 +125,8 @@
         crossorigin="anonymous"></script>
     <!-- JS -->
     @include('main.footer')
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/cart.js"></script>
 </body>
 
 </html>

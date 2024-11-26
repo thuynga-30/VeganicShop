@@ -119,6 +119,24 @@
     width: 20px;
     height: 20px;
 }
+.history-header {
+    text-align: center;
+    margin: 50px 70% 0 0;
+    padding: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề */
+.history-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
 /* Summary
 .cart__summary {

@@ -103,14 +103,14 @@ class CartController extends Controller
         'selected_products' => 'required|array',
     ]);
 
-    // Update the status of selected products
     foreach ($request->selected_products as $productId) {
         Cart::where('user_id', auth()->id())
-            ->where('product_id', $request->selected_products)
+            ->where('product_id', $productId)
             ->update(['status' => 1]);
     
     }
     // Optionally, reset status of unselected products to 0
+    
     Cart::where('user_id', auth()->id())
         ->whereNotIn('product_id', $request->selected_products)
         ->update(['status' => 0]);

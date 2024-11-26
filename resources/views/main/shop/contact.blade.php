@@ -19,7 +19,7 @@
                         <!-- Logo -->
                         <img src="assets/img/logo4.png" alt="" class="logo">
                         <!-- Navbar -->
-                        @include('main.shop.navbar')
+                        @include('main.navbar')
 
                     </div>
                 </div>
@@ -37,9 +37,7 @@
                     <div class="col-xl-8 col-sm-12">
                         <div class="contact-form">
                             <div class="contact__top">
-                                <p class="contact__desc section-desc-heading">
-                                    Would like to talk?
-                                </p>
+                                
                                 <h3 class="contact__title section-title">
                                     Contact Details
                                 </h3>
@@ -126,6 +124,8 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     @include('main.footer')
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/cart.js"></script>
 </body>
 
 </html>

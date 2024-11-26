@@ -3,9 +3,12 @@
 
 <head>
     @include('main.header')
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- CSS --> --}}
  
     <link rel="stylesheet" href="/assets/css/product.css">
-    <link rel="stylesheet" href="/assets/css/product-detail.css  ">
+    <link rel="stylesheet" href="/assets/css/product-detail.css">
 </head>
 
 <body>
@@ -18,8 +21,7 @@
                     <div class="header__top-inner">
                         <!-- Logo -->
                         <img src="/assets/img/logo4.png" alt="" class="logo">
-                        <!-- Navbar -->
-                        @include('main.shop.navbar')
+                       @include('main.navbar')
                     </div>
                 </div>
             </div>
@@ -32,18 +34,18 @@
             <div class="container">
                 <div class="product-detail__inner">
                     <div class="row">
-                        <form action="{{ route('cart.add',$product->id) }}" method="get">
-                            @csrf
-                        <div class="col-9">
+                        <div class="col-lg-9 col-12">
+                            <form action="{{ route('cart.add',$product->id) }}" method="get">
+                                @csrf
                             <div class="product-detail__content">
                                 <div class="row">
-                                    <div class="col-6">
+                                    
+                                    <div class="col-lg-6 col-12">
                                         <figure class="product-detail__media">
                                             <img src="/assets/img/{{ $product->image }}" alt="" class="product-detail__img">
                                         </figure>
-                                      
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-lg-6 col-12">
                                         <div class="product-detail__sale">
                                             <h2 class="product-detail__title">
                                                 {{ $product->name }}
@@ -60,7 +62,7 @@
                                                 <span class="product-detail__price--bold">
                                                     ${{ $product ->price }}
                                                 </span>
-                                                
+                                               
                                             </p>
                                             <p class="product-detail__desc">
                                                 {{ $product ->basic_des }}
@@ -82,23 +84,31 @@
                                                     100000g
                                                 </span>
                                             </div>
-                                            
                                             <div class="product-detail__action">
                                                 <div class="product-detail__number-box form-group">
-                                                  
+                                                    
                                                     <input type="number"
-                                                        class="form-control text-center product-detail__number" name="quantity" value="1">
-                                                  
+                                                        class="form-control text-center product-detail__number"
+                                                        name="quantity" value="1">
+                
                                                 </div>
+                                                @if (Auth::check())
                                                 <button class="product-detail__btn-action btn btn-2"><i
-                                                        class="fa-solid fa-cart-shopping"></i> <span>Add</span></button>
+                                                    class="fa-solid fa-cart-shopping"></i> <span>Add</span></button>
+                                                @else
+                                                <a href="{{ route('login') }}" class="product-detail__btn-action btn btn-2">
+                                                    <i class="fa-solid fa-cart-shopping"></i> <span>Add</span>
+                                                </a>      
+                                                @endif
+                                               
+                                                
                                             </div>
-                                            </form>
+                                        </form>
                                             <div class="product-detail__desc-list">
                                                 <p class="product-detail__desc-item">
                                                     <span class="product-detail__desc-item-title">Type</span>
                                                     <span>{{ $product->cat->name }}</span>
-                                                </p>                         
+                                                </p>
                                             </div>
                                         </div>
 
@@ -108,21 +118,10 @@
                                             <div class="product-detail__info-actions">
                                                 <a href=""
                                                     class="product-detail__info-action product-detail__info-action--active">Description</a>
-                                                    <a href=""
-                                                    class="product-detail__info-action">Review</a>                                              
+                                               
                                             </div>
                                             <p class="product-detail__info-desc product-detail__desc">
                                                 {{ $product ->description }}
-                                            </p>
-                                            <ul class="product-detail__info-list">
-                                                <li class="product-detail__info-item-desc">
-                                                    <span>Type Of Packing</span>
-                                                    <span>Bottle</span>
-                                                </li>
-                                                
-                                            </ul>
-                                            <p class="product-detail__info-desc product-detail__desc">
-                                                {{ $product->descri }}
                                             </p>
                                             <h3 class="product-detail__info-title">
                                                 Packaging & Delivery
@@ -172,16 +171,19 @@
                                         <div class="product-detail__related">
                                             <div class="row">
                                                 @foreach ($randomProducts as $rand)
-                                                <div class="col-3">
+                                                <div class="col-lg-3 col-6">
                                                     <div class="product-detail__related-item">
+                                                        <a href="{{ route('details',$rand->id) }}">
                                                         <figure class="product-detail__related-img-wrap">
                                                             <img src="/assets/img/{{ $rand->image }}" alt=""
                                                                 class="product-detail__related-img">
                                                         </figure>
+                                                        
                                                         <div class="product-detail__related-item-body">
                                                             <h4 class="product-detail__related-item-title">
                                                                 {{ $rand->name }}
                                                             </h4>
+                                                        </a>
                                                             <div class="ratting">
                                                                 <i class="fa-solid fa-star product__ratting-icon"></i>
                                                                 <i class="fa-solid fa-star product__ratting-icon"></i>
@@ -192,7 +194,7 @@
                                                             </div>
                                                             <p class="product-detail__price">
                                                                 <span class="product-detail__price--bold">
-                                                                    {{ $rand->price }}
+                                                                    ${{ $rand->price }}
                                                                 </span>
                                                                 
                                                             </p>
@@ -200,35 +202,38 @@
                                                     </div>
                                                 </div>
                                                 @endforeach
-                                                
+                                               
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-12">
                             <div class="product-detail__other">
                                 <h3 class="product-detail__other-title">
                                     New title
                                 </h3>
                                 <div class="product-detail__other-list">
                                     @foreach ($randomProducts as $rand)
-                                        <div class="product-detail__other-item">
-                                            <figure class="product-detail__other-img-wrap">
-                                                <img src="/assets/img/{{ $rand->image }}" alt="" class="product-detail__other-img">
-                                            </figure>
-                                            <div class="product-detail__other-item-content">
-                                                <h4 class="product-detail__other-item-title">
-                                                    {{ $rand->name }}
-                                                </h4>
-                                                <p class="product-detail__other-item-price">
-                                                {{ $rand->price }}
-                                                </p>
-                                            </div>
+                                    <div class="product-detail__other-item">
+                                        <a href="{{ route('details',$rand->id) }}">
+                                        <figure class="product-detail__other-img-wrap">
+                                            <img src="/assets/img/{{ $rand->image }}" alt=""
+                                                class="product-detail__other-img">
+                                        </figure>
+                                        <div class="product-detail__other-item-content">
+                                            <h4 class="product-detail__other-item-title">
+                                                {{ $rand->name }}
+                                            </h4>
+                                        </a>
+                                            <p class="product-detail__other-item-price">
+                                                $ {{ $rand->price }}
+                                            </p>
                                         </div>
-                               @endforeach
-                                    
+                                    </div>
+                                    @endforeach
+                                   
                                 </div>
                             </div>
                         </div>
@@ -239,13 +244,15 @@
     </main>
     <!-- Emd Main -->
     <!-- Footer -->
-    
+    @include('main.footer')
+    <!-- End Footer -->
     <!-- Bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <!-- JS -->
-    @include('main.footer')
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/cart.js"></script>
 </body>
 
 </html>

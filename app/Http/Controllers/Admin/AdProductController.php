@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdProductController extends Controller
 {
@@ -50,6 +54,12 @@ class AdProductController extends Controller
 
     }
     //product_edit
+    public function product_edit(Product $product){
+        return view('main.admin.edit-product',[
+            'title' => 'Product Edit',
+            'product' => $product
+        ]);
+    }
     public function update_product(Request $request,Product $product){
         $request->validate([
             'name' => 'required|unique:products,name,'. $product->id,
@@ -75,5 +85,30 @@ class AdProductController extends Controller
             return redirect()->back()->with('no','Product added successfully');
  
     
+    }
+    public function order_manager(){
+        $order=Order::all();
+        $startOfWeek = Carbon::now()->startOfWeek();
+        $endOfWeek = Carbon::now()->endOfWeek();
+        $totalRevenueToday = DB::table('totalrevenueview')
+        ->whereBetween('order_date', [$startOfWeek, $endOfWeek])
+        ->sum('total_amount');
+        $orderCount= Order::whereBetween('created_at', [$startOfWeek, $endOfWeek])->count();
+        // dd($totalRevenueToday);
+        return view('main.admin.order-manager',[
+            'title' => 'Order Manager',
+            'orders' => $order,
+            'totalRevenueToday' => $totalRevenueToday,
+            'orderCount' => $orderCount,
+        ]);
+    }
+    public function order_delete(Order $order){
+        $oderDetail = OrderDetail::where('order_id',$order->id)->delete();
+        if($oderDetail){ 
+        if($order->delete()){
+            return redirect()->route('admin.order_manager')->with('success','Product deleted successfully');
+        }
+        return redirect()->back()->with('no','Product deleted unsuccessfully');
+    }
     }
 }

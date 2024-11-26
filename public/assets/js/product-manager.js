@@ -39,3 +39,16 @@ document.getElementById('editForm').addEventListener('submit', (event) => {
   // Đóng modal sau khi cập nhật xong
   closeModal();
 });
+function previewImage(event) {
+  const input = event.target;
+  const preview = document.getElementById('productPreview');
+
+  // Kiểm tra xem có file được chọn không
+  if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+          preview.src = e.target.result; // Thay đổi src thành ảnh mới
+      };
+      reader.readAsDataURL(input.files[0]); // Đọc file để hiển thị ảnh
+  }
+}

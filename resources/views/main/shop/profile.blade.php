@@ -17,7 +17,7 @@
                         <!-- Logo -->
                         <img src="/assets/img/logo4.png" alt="" class="logo">
                         <!-- Navbar -->
-                       @include('main.shop.navbar')
+                       @include('main.navbar')
                     </div>
                 </div>
             </div>
@@ -90,6 +90,8 @@
         crossorigin="anonymous"></script>
     <!-- JS -->
     @include('main.footer')
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/cart.js"></script>
     <script src="/assets/js/userprofile.js"></script>
 </body>
 

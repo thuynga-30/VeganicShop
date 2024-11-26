@@ -17,7 +17,7 @@
                         <!-- Logo -->
                         <img src="/assets/img/logo4.png" alt="" class="logo">
                         <!-- Navbar -->
-                        @include('main.admin.navbar')
+                        @include('main.navbar')
 
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                         <td>{{ $product->description }}</td>
                         <td>
                             
-                            {{-- <button class="btn-pm edit-btnpm" onclick="openEditPopup(this)" data-product="{{ json_encode($product) }}">Edit</button> --}}
+                            <a href="{{ route('admin.edit_product',$product->id) }}" class="btn-pm edit-btnpm">Edit</a>
                             <form action="{{ route('admin.delete_product',$product->id) }}" method="POST" onclick="return confirm('Are you sure want to delete?')">
                                 @csrf
                                 <button type="submit" class="btn-pm delete-btnpm">Delete</button>
@@ -112,51 +112,11 @@
                     <!-- More rows as needed -->
                 </tbody>
             </table>
+            {{ $products->links() }}
         </section>
     </main>
-    </div>
-    {{-- <div id="editModal" class="modal hidden">
-        <div class="modal-content">
-            <h3 class="modal-title">Edit Product</h3>
-  
-            <form method="POST" action="{{ route('admin.update_product',$product->id) }}" >
-                @csrf
-                <div class="form-group">
-                    <label class="lb-pm" for="editImage">Product Image</label>
-                    <input class="ip-pm" type="file" id="editImage" name="image">
-                    <img src="/assets/img/{{ $product->image }}" width="100px">
-
-                </div>
-                <div class="form-group">
-                    <label class="lb-pm" for="editName">Name</label>
-                    <input class="ip-pm" type="text" id="editName" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label class="lb-pm" for="editOrigin">Origin</label>
-                    <input class="ip-pm" type="text" id="editOrigin" name="origin"  required>
-                </div>
-                <div class="form-group">
-                    <label class="lb-pm" for="editPrice">Price</label>
-                    <input class="ip-pm" type="number" id="editPrice" name="price"  required>
-                </div>
-                <div class="form-group">
-                    <label class="lb-pm" for="editWeight">Weight</label>
-                    <input class="ip-pm" type="number" id="editWeight" name="quantity"  required>
-                </div>
-                <div class="form-group">
-                    <label class="lb-pm" for="editDescBasic">Basic Description</label>
-                    <textarea class="ip-pm" id="editDescBasic" name="basic_des"  required></textarea>
-                </div>
-                <div class="form-group">
-                    <label class="lb-pm" for="editDescDetailed">Detailed Description</label>
-                    <textarea class="ip-pm" id="editDescDetailed" name="description"  required></textarea>
-                </div>
-                <button type="submit" class="btn-pm save-btnpm">Save Changes</button>
-                <button type="button" class="btn-pm cancel-btnpm" onclick="closeModal()">Cancel</button>
-            </form>
-        </div>
-    </div> --}}
-    <!-- Footer -->
+   
+   
     @include('main.admin.footer')
 
     <script src="/assets/js/product-manager.js"></script>
