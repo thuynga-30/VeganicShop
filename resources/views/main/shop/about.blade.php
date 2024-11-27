@@ -211,9 +211,9 @@
                                     Who we are
                                 </h3>
                                 <p class="performance__desc">
-                                    Volutpat diam ut venenatis tellus in metus. Nec dui nunc
-                                    mattis enim ut tellus eros donec ac odio orci ultrices in.
-                                    ellus eros donec ac odio orci ultrices in.
+                                    We are Veganic, a team committed to providing high-quality organic foods that promote a healthier lifestyle.
+                                     Our focus is on sustainability and offering products that nourish both the body and the planet
+                                    
                                 </p>
                             </div>
                         </div>
@@ -223,9 +223,8 @@
                                     Our history
                                 </h3>
                                 <p class="performance__desc">
-                                    Volutpat diam ut venenatis tellus in metus. Nec dui nunc
-                                    mattis enim ut tellus eros donec ac odio orci ultrices in.
-                                    ellus eros donec ac odio orci ultrices in.
+                                    Founded with the belief in the power of organic food, Veganic has grown into a trusted brand,
+                                    sourcing responsibly from local farmers and global suppliers to bring healthy, organic options to everyone
                                 </p>
                             </div>
                         </div>
@@ -235,9 +234,8 @@
                                     Our mission
                                 </h3>
                                 <p class="performance__desc">
-                                    Volutpat diam ut venenatis tellus in metus. Nec dui nunc
-                                    mattis enim ut tellus eros donec ac odio orci ultrices in.
-                                    ellus eros donec ac odio orci ultrices in.
+                                    Our mission is to inspire healthier living by offering the finest organic products and promoting sustainability,
+                                     helping people make better choices for their health and the environment
                                 </p>
                             </div>
                         </div>

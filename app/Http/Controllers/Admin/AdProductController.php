@@ -27,11 +27,24 @@ class AdProductController extends Controller
             'name' => 'required|unique:products',
             'image' => 'file|mimes:jpg,jpeg,png,gif',
             'price' => 'required|numeric',
-            'origin'=>'',
-            'quantity'=>'',
+            'origin'=>'required',
+            'quantity'=>'required',
             'description' => 'required',
-            'basic_des'=>'',
+            'basic_des'=>'required',
             'category_id'=>'required|exists:categories,id'
+        ],[
+            'name.required' => 'Please enter product name',
+            'name.unique' => 'Product name already exist',
+            'image.file' => 'Please select image',
+            'price.required' => 'Please enter product price',
+            'price.numeric' => 'Please enter valid price',
+            'origin.required' => 'Please enter product origin',
+            'quantity.required' => 'Please enter product quantity',
+            'description.required' => 'Please enter product description',
+            'basic_des.required' => 'Please enter product basic description',
+            'category_id.required' => 'Please select category',
+            'category_id.exists' => 'Category not found'
+
         ]);
         $data=$request->only('name','price','type','origin','quantity','description','basic_des','category_id');
         $image_name= $request->image->getClientOriginAlName();
@@ -74,7 +87,7 @@ class AdProductController extends Controller
         $data = $request->only('name','price','origin','quantity','description','basic_des','category_id');
         if($request->hasFile('image')){
             $image_name= $request->image->getClientOriginAlName();
-            $request->image->move(public_path('assets/img'),$image_name);
+            $request->image->move(public_path('assets/img/products'),$image_name);
             $data['image']=$image_name; 
         } 
        

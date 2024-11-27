@@ -34,7 +34,7 @@
         <!-- Add User Form -->
        
         <div class="form-container">
-            <h3 class="um-title">Add New User</h3>
+            <h3 class="um-title">Edit User</h3>
             {{-- <form id="addUserForm"> --}}
                 <form  action="{{ route('admin.update_user',$user->id) }}" method="POST">
                     @csrf

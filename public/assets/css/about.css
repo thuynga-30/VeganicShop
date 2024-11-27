@@ -190,7 +190,9 @@ body {
 .performance .row {
     align-items: center;
 }
-
+.performance__our .row {
+    align-items: stretch; 
+}
 .performance__media {
     display: flex;
     align-items: center;
@@ -229,8 +231,9 @@ body {
 }
 
 .performance__box {
-    margin-top: 50px;
+    margin-top: 80px;
 }
+
 
 @media (max-width: 500px) {
     .performance__img {

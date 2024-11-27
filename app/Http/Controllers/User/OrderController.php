@@ -48,6 +48,12 @@ class OrderController extends Controller
                     'address' => 'required',
                     'phone' => 'required',
                     'gender' => 'required',
+                ],[
+                    'name.required'=>'Please enter your name',
+                    'email.required'=>'Please enter your email',
+                    'address.required'=>'Please enter your address',
+                    'phone.required'=>'Please enter your phone',
+                    'gender.required'=>'Please enter your gender',
                 ]);
         $selectedItems = Cart::where('user_id', $user->id)
         ->where('status', 1)

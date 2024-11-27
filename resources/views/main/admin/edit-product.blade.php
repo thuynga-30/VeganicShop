@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label class="lb-pm" for="image">Product Image</label>
                     <input class="ip-pm" type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)">
-                    <img src="/assets/img/{{ $product->image }}" alt="" class="product-img" id="productPreview">
+                    <img src="/assets/img/products/{{ $product->image }}" alt="" class="product-img" id="productPreview">
                 </div>
                 <div class="form-group">
                     <label class="lb-pm" for="name">Name</label>

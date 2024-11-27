@@ -60,6 +60,11 @@ Route::middleware(['auth'])->group(function () {
     //product
     Route::get('/product', [ProductController::class, 'product'])->name('product');
     Route::get('/product/{product}', [ProductController::class, 'product_details'])->name('details');
+    //comment
+    Route::post('/comment/{product}', [ProductController::class, 'add_comment'])->name('comment');
+    Route::post('/comment/delete/{comment}', [ProductController::class, 'delete_comment'])->name('delete_comment');
+    Route::post('/comment/{comment}', [ProductController::class, 'edit_comment'])->name('edit_comment');
+
     //search
     Route::get('/search', [ProductController::class, 'search'])->name('search');
     // Route::get('/search/{search}', [ProductController::class, 'search_product'])->name('search_product');

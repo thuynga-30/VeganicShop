@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 //Paginator
 use Illuminate\Pagination\Paginator;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -37,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
             $users = User::where('role', 'user')->paginate(12);
             $origins = Product::select('origin')->distinct()->get();
             $oders = Order::orderBy('id','ASC')->paginate(4); 
+            // $comments=Comment::orderBy('id','ASC')->get();
             $view->with(compact('cats','products','users','origins','oders'));
 
         });

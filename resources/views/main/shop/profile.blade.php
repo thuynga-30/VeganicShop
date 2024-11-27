@@ -27,6 +27,7 @@
     <!-- Main -->
     <h2 class="section-title-pm">User Management</h2>
     <div class="containerprf">
+        @include('main.alert')
         {{-- <h2 id="prlnameid" class="prlname">User Profile</h2>  --}}
         <form  action="{{ route('updateProfile') }}" method="post">
             @csrf
@@ -63,14 +64,7 @@
                 <label class="lb-prf" for="address">Address</label>
                 <textarea class="infor inp tar" id="address" name="address" readonly>{{ $user->address }}</textarea>
             </div>
-            {{-- <div class="form-groupprf">
-                <label class="lb-prf" for="password">Password</label>
-                <input class="infor" type="password" id="password" name="password" placeholder="Your Password">
-                <button type="button" class="btnprf" onclick="togglePassword()">Show</button>
-                @error('password')
-                    <div class="help-block">{{ $message }}</div>
-                @enderror
-            </div>  --}}
+           
             <button type="submit" class="btnprf save-btnprf hiddenprf">Save Changes</button>
 
         </form>

@@ -42,6 +42,7 @@
                                     Contact Details
                                 </h3>
                             </div>
+                            @include('main.alert')
                             <form action="{{ route('contact-store') }}" method="post" autocomplete="on">
                                 @csrf
                                 <div class="row">

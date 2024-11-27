@@ -172,7 +172,7 @@
                             <div class="our-product__item">
                                 <a href="{{ route('details',$pro->id) }}">
                                 <figure class="our-product__img-wrap">
-                                    <img src="/assets/img/{{ $pro->image }}" class="our-product__img" />
+                                    <img src="/assets/img/products/{{ $pro->image }}" class="our-product__img" />
                                 </figure>
                             </a>
                                 <div class="our-product__item-body">
@@ -193,8 +193,7 @@
                                             <i class="fa-solid fa-star our-product__ratting-icon"></i>
                                             <i class="fa-solid fa-star our-product__ratting-icon"></i>
                                         </div>
-                                        <a href="{{ route('details',$pro->id) }}" class="our-product__cart"> <i
-                                                class="fa-solid fa-cart-shopping navbar__link-icon"></i>
+                                        <a href="{{ route('details',$pro->id) }}" class="our-product__cart"> <i class="fa-solid fa-eye" style="color: #ffffff;"></i>
                                         </a>
                                     </div>
                                 </div>

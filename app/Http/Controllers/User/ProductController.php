@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Comment;
+use Illuminate\Support\Facades\Auth;
+
 class ProductController extends Controller
 {
     
@@ -18,11 +21,12 @@ class ProductController extends Controller
     }
     public function product_details(Product $product) {
         $randomProducts = Product::inRandomOrder()->limit(4)->get();
-
+        $comments= Comment::where('product_id',$product->id)->get();
         return view('main.shop.product-detail', [
             'title' => 'Product Details',
             'product' => $product, // Dữ liệu của sản phẩm
-            'randomProducts' => $randomProducts
+            'randomProducts' => $randomProducts,
+            'comments' => $comments,
         ]);
     }
     //search
@@ -54,4 +58,46 @@ class ProductController extends Controller
         ]);
 
     }
+    //comment
+    public function add_comment(Product $product,Request $request){
+        $request->validate([
+            'comment' => 'required',
+        ]);
+        $data= $request->only('comment');
+        $data['product_id']=$product->id;
+        $data['user_id']=Auth::id();
+        Comment::create($data);
+        return redirect()->back()->with('success','Comment added successfully');
+    }
+    public function delete_comment(Comment $comment){
+        // Kiểm tra xem người dùng hiện tại có phải là chủ sở hữu bình luận không
+        if ($comment->user_id !== Auth::id()) {
+            return redirect()->back()->with('error', 'You are not authorized to delete this comment.');
+        }
+
+        // Xóa bình luận
+        $comment->delete();
+
+        return redirect()->back()->with('success', 'Comment deleted successfully.');
+    }
+    public function edit_comment(Request $request, Comment $comment)
+    {
+        // Kiểm tra quyền chỉnh sửa
+        if (Auth::id() !== $comment->user_id) {
+            return redirect()->back()->with('error', 'Unauthorized');
+        }
+    
+        // Xác thực dữ liệu
+        $request->validate([
+            'comment' => 'required|string',
+        ]);
+    
+        // Cập nhật bình luận
+        $comment->update([
+            'comment' => $request->comment,
+        ]);
+    
+        return redirect()->back()->with('success', 'Comment updated successfully');
+    }
+    
 }

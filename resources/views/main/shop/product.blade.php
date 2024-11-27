@@ -31,6 +31,7 @@
         <section class="search">
             <div class="container">
                 <div class="search__form-group">
+                    @include('main.alert')
                     <form class="search__form" action="{{ route('search') }}" method="GET">
                         <div class="row">
                             <div class="col-lg-3 col-6">
@@ -85,7 +86,7 @@
                                 <div class="product__item">
                                     <a href="{{ route('details',$prod->id) }}">
                                     <figure class="product__img-wrap">
-                                        <img src="assets/img/{{ $prod->image }}" alt="" class="product__img">
+                                        <img src="/assets/img/products/{{ $prod->image }}" alt="" class="product__img">
                                     </figure>
                                     <div class="product__item-body">
                                         <p class="product__type">
@@ -128,13 +129,7 @@
                         <div style="margin-top: 10px">
                         {{ $products->links() }}
                         </div>
-                        {{-- <div class="pagination">
-                            <span class="pagination__btn pagination__btn-p"><i
-                                    class="fa-solid fa-arrow-left"></i></span>
-                            <span class="pagination__page"></span>
-                            <span class="pagination__btn pagination__btn-n"><i
-                                    class="fa-solid fa-arrow-right"></i></span>
-                        </div> --}}
+                       
                     </div>
                 </div>
             </div>

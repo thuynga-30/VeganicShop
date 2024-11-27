@@ -26,17 +26,10 @@
             </div>
             @csrf
           <button type="submit" class="btn solid">Log In</button>
-            <p class="social-text">Or Sign in with social platforms</p>
+           
           
           </form>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fa-brands fa-facebook"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fa-brands fa-google"></i>
-              </a>
-            </div>
+            
         </div>
       </div>
 

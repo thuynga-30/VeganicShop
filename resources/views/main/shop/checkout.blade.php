@@ -35,7 +35,8 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <h1 class="checkout__title section-title">Billing details</h1>
-                        <form action="{{ route('order.checkout') }}" method="post"> 
+                        @include('main.alert')
+                        <form action="{{ route('order.checkout') }}" method="post" > 
                             @csrf
                             <div class="row">
                                 <div class="col-6">
@@ -70,7 +71,7 @@
                                 <label class="checkout__label">Email Address<sup>*</sup></label>
                                 <input type="email" class="form-control checkout__input" name="email" value="{{ $user->email }}">
                             </div>
-                            <button type="submit" class="btn btn-2 w-100">Buy</button>
+                            <button type="submit" class="btn btn-2 w-100" onclick="return confirm('Are you sure want to order?')" >Buy</button>
 
                         </form>
                     </div>
@@ -91,7 +92,7 @@
                                     <td>
                                         <div class="cart__product">
                                             <figure class="cart__img-wrap">
-                                                <img src="/assets/img/{{ $item->prod->image }}" alt="" class="cart__img">
+                                                <img src="/assets/img/products/{{ $item->prod->image }}" alt="" class="cart__img">
                                             </figure>
                                             
                                         </div>

@@ -42,7 +42,7 @@
                                     
                                     <div class="col-lg-6 col-12">
                                         <figure class="product-detail__media">
-                                            <img src="/assets/img/{{ $product->image }}" alt="" class="product-detail__img">
+                                            <img src="/assets/img/products/{{ $product->image }}" alt="" class="product-detail__img">
                                         </figure>
                                     </div>
                                     <div class="col-lg-6 col-12">
@@ -116,55 +116,98 @@
                                     <div class="col-12">
                                         <div class="product-detail__info">
                                             <div class="product-detail__info-actions">
-                                                <a href=""
-                                                    class="product-detail__info-action product-detail__info-action--active">Description</a>
-                                               
+                                                <button type="button"
+                                                    class="product-detail__info-action product-detail__info-action--active"
+                                                    onclick="showTab('description')">
+                                                    Description</button>
+                                                    <button type="button"
+                                                    class="product-detail__info-action" onclick="showTab('review')">
+                                                    Review</button>    
                                             </div>
-                                            <p class="product-detail__info-desc product-detail__desc">
-                                                {{ $product ->description }}
-                                            </p>
-                                            <h3 class="product-detail__info-title">
-                                                Packaging & Delivery
-                                            </h3>
-                                            <p class="product-detail__info-desc product-detail__desc">
-                                                Laconic overheard dear woodchuck wow this outrageously taut beaver hey
-                                                hello
-                                                far meadowlark imitatively egregiously hugged that yikes
-                                                minimally unanimous pouted flirtatiously as beaver beheld above forward
-                                                energetic across this jeepers beneficently cockily less a the
-                                                raucously that magic upheld far so the this where crud then below after
-                                                jeez
-                                                enchanting drunkenly more much wow callously irrespective
-                                                limpet.
-                                            </p>
-                                            <h3 class="product-detail__info-title">
-                                                Suggested Use
-                                            </h3>
-                                            <p class="product-detail__info-desc product-detail__desc">
-                                                Refrigeration not necessary.
-                                            </p>
-                                            <p class="product-detail__info-desc product-detail__desc">
-                                                Stir before serving
-                                            </p>
-                                            <h3 class="product-detail__info-title">
-                                                Other Ingredients
-                                            </h3>
-                                            <p class="product-detail__info-desc product-detail__desc">
-                                                Organic raw pecans, organic raw cashews.
-                                            </p>
-                                            <p class="product-detail__info-desc product-detail__desc">
-                                                This butter was produced using a LTG (Low Temperature Grinding) process
-                                            </p>
-                                            <p class="product-detail__info-desc product-detail__desc">
-                                                Made in machinery that processes tree nuts but does not process peanuts,
-                                                gluten, dairy or soy
-                                            </p>
-                                            <h3 class="product-detail__info-title">
-                                                Warnings
-                                            </h3>
-                                            <p class="product-detail__info-desc product-detail__desc">
-                                                Oil separation occurs naturally. May contain pieces of shell.
-                                            </p>
+                                            <div id="description" class="tab-content active">
+                                                <p class="product-detail__info-desc product-detail__desc">
+                                                    {{ $product ->description }}
+                                                </p>
+                                                <h3 class="product-detail__info-title">
+                                                    Packaging & Delivery
+                                                </h3>
+                                                <p class="product-detail__info-desc product-detail__desc">
+                                                    Laconic overheard dear woodchuck wow this outrageously taut beaver hey
+                                                    hello
+                                                    far meadowlark imitatively egregiously hugged that yikes
+                                                    minimally unanimous pouted flirtatiously as beaver beheld above forward
+                                                    energetic across this jeepers beneficently cockily less a the
+                                                    raucously that magic upheld far so the this where crud then below after
+                                                    jeez
+                                                    enchanting drunkenly more much wow callously irrespective
+                                                    limpet.
+                                                </p>
+                                                <h3 class="product-detail__info-title">
+                                                    Suggested Use
+                                                </h3>
+                                                <p class="product-detail__info-desc product-detail__desc">
+                                                    Refrigeration not necessary.
+                                                </p>
+                                                <p class="product-detail__info-desc product-detail__desc">
+                                                    Stir before serving
+                                                </p>
+                                                <h3 class="product-detail__info-title">
+                                                    Other Ingredients
+                                                </h3>
+                                                <p class="product-detail__info-desc product-detail__desc">
+                                                    Organic raw pecans, organic raw cashews.
+                                                </p>
+                                                <p class="product-detail__info-desc product-detail__desc">
+                                                    This butter was produced using a LTG (Low Temperature Grinding) process
+                                                </p>
+                                                <p class="product-detail__info-desc product-detail__desc">
+                                                    Made in machinery that processes tree nuts but does not process peanuts,
+                                                    gluten, dairy or soy
+                                                </p>
+                                                <h3 class="product-detail__info-title">
+                                                    Warnings
+                                                </h3>
+                                                <p class="product-detail__info-desc product-detail__desc">
+                                                    Oil separation occurs naturally. May contain pieces of shell.
+                                                </p>
+                                            </div>
+                                            <div id="review" class="tab-content">
+                                                <h3>User Reviews</h3>
+                                                @foreach ($comments as $comment)
+                                                <div class="comment">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-12">
+                                                    <div class="comment-author">
+                                                        <strong>{{ $comment->user->name }}</strong> <span class="comment-date">{{ $comment->created_at->format('d/m/Y') }}</span>
+                                                    </div>
+                                                    <p>{{ $comment->comment }}</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-12">
+
+                                                    @if (Auth::id() === $comment->user_id)
+                                                        <form action="{{ route('delete_comment', $comment->id) }}" method="POST" style="display: inline;">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this comment?');">
+                                                            <i class="fa-regular fa-trash-can"></i>
+                                                        </button>
+                                                    </form>
+                                                    @endif
+                                                    </div>
+                                                    </div>    
+                                                </div>
+                                                @endforeach
+                                                <h3>Leave a Review</h3>
+                                                <form action="{{ route('comment',$product->id) }}" method="POST">
+                                                    @csrf
+                                                    <textarea name="comment" placeholder="Write your review here..." rows="4" style="width: 100%;"></textarea>
+                                                    @if (auth()->check())
+                                                    <button type="submit">Submit Review</button>
+                                                </form>                    
+                                                @else
+                                                <a href="{{ route('login') }}"><button type="button">Submit Review</button> </a>
+                                                @endif
+                                                   
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -175,7 +218,7 @@
                                                     <div class="product-detail__related-item">
                                                         <a href="{{ route('details',$rand->id) }}">
                                                         <figure class="product-detail__related-img-wrap">
-                                                            <img src="/assets/img/{{ $rand->image }}" alt=""
+                                                            <img src="/assets/img/products/{{ $rand->image }}" alt=""
                                                                 class="product-detail__related-img">
                                                         </figure>
                                                         
@@ -219,7 +262,7 @@
                                     <div class="product-detail__other-item">
                                         <a href="{{ route('details',$rand->id) }}">
                                         <figure class="product-detail__other-img-wrap">
-                                            <img src="/assets/img/{{ $rand->image }}" alt=""
+                                            <img src="/assets/img/products/{{ $rand->image }}" alt=""
                                                 class="product-detail__other-img">
                                         </figure>
                                         <div class="product-detail__other-item-content">

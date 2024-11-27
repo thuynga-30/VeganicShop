@@ -17,7 +17,7 @@
                 <div class="container">
                     <div class="header__top-inner">
                         <!-- Logo -->
-                        <img src="../assets/img/logo4.png" alt="" class="logo">
+                        <img src="/assets/img/logo4.png" alt="" class="logo">
                         <!-- Navbar -->
                         @include('main.navbar')
 
@@ -33,6 +33,7 @@
         <!-- Cart -->
         <section class="cart">
             <div class="container">
+                @include('main.alert')
                 <form action="{{ route('cart.checkout') }}" method="POST">                   
                     @csrf
                 <table class="table cart__table">
@@ -53,7 +54,7 @@
                             <td>
                                 <div class="cart__product">
                                     <figure class="cart__img-wrap">
-                                        <img src="/assets/img/{{ $item->prod->image }}" alt="" class="cart__img">
+                                        <img src="/assets/img/products/{{ $item->prod->image }}" alt="" class="cart__img">
                                     </figure>
                                     
                                 </div>

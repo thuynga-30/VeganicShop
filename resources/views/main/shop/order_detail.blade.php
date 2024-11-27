@@ -80,7 +80,7 @@
                                 <td>
                                     <div class="cart__product">
                                         <figure class="cart__img-wrap">
-                                            <img src="/assets/img/{{ $item->prod->image }}" alt="" class="cart__img">
+                                            <img src="/assets/img/products/{{ $item->prod->image }}" alt="" class="cart__img">
                                         </figure> 
                                     </div>
                                 </td>
