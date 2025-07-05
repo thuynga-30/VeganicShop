@@ -3,7 +3,7 @@
 
 <head>
     @include('main.header')
-    <link rel="stylesheet" href="assets/css/product.css">
+    <link rel="stylesheet" href="/assets/css/product.css">
 
 </head>
 <body>
@@ -15,7 +15,7 @@
                 <div class="container">
                     <div class="header__top-inner">
                         <!-- Logo -->
-                        <img src="assets/img/logo4.png" alt="" class="logo">
+                        <img src="/assets/img/logo4.png" alt="" class="logo">
                         <!-- Navbar -->
                         @include('main.navbar')
 
@@ -28,7 +28,7 @@
         <div class="container">
             <div class="search__form-group">
                 @include('main.alert')
-                <form action="{{ route('search') }}" method="GET">
+                <form action="{{ route('products.search') }}" method="GET">
                     <div class="row">
                         <div class="col-lg-3 col-6">
                             <div class="form-group">
@@ -55,7 +55,7 @@
                                     class="search__select form-control">
                                     <option class="search__option" value="">Select Origin</option>
                                     @foreach($origins as $origin)
-                                    <option value="{{$category->origin}}">{{$origin->origin}}</option>
+                                    <option value="{{$origin->origin}}">{{$origin->origin}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -75,7 +75,8 @@
         <div class="container">
             <div class="product__inner">
                 <div class="row">
-                <div class="search-result">
+                    @if(isset($product) && $product->isNotEmpty())
+                    <div class="search-result">
                     <p class="search-result__text">Tìm thấy <span class="search-result__count">{{ count($product) }}</span> sản phẩm</p>
                 </div>
                 </div>
@@ -84,7 +85,7 @@
                     @foreach ($product as $prod)
                         <div class="col-lg-3 col-6">
                             <div class="product__item">
-                                <a href="{{ route('details',$prod->id) }}">
+                                <a href="{{ route('products.details',$prod->id) }}">
                                 <figure class="product__img-wrap">
                                     <img src="/assets/img/products/{{ $prod->image }}" alt="" class="product__img">
                                 </figure>
@@ -123,7 +124,14 @@
                             </div>
                         </div>
                     @endforeach
+                  
             </div>
+                @else
+                    <div class="no-products">
+                        <h2 class="no-products__title">Oops! No Products Found</h2>
+                        <p class="no-products__message">Try adjusting your search filters or check back later for more products.</p>
+                    </div>
+             @endif
         </div>
     </section>
     

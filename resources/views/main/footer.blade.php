@@ -33,18 +33,20 @@
                         <h3 class="footer__title section-title">
                             Contact us here
                         </h3>
-                        <form action="" class="footer__form-inner">
-                            <div class="footer__form-group form-group">
-                                <input type="email" id="email" class="form-control footer__form-input"
-                                    placeholder="Enter your email" required>
+                        <form action="{{ route('contact-store') }}" method="post" autocomplete="on" >
+                            <div class="footer__form-inner">
+                                <div class="footer__form-group form-group">
+                                    <input type="email" id="email" name="email" class="form-control footer__form-input"
+                                        placeholder="Enter your email" required>
+                                </div>
                             </div>
-                        </form>
-                        <form action="" class="footer__form-inner1">
-                            <div class="footer__form-group form-group">
-                                <input type="email" id="email" class="form-control footer__form-input"
-                                    placeholder="Enter your message" required>
+                            <div class="footer__form-inner1">
+                                <div class="footer__form-group form-group">
+                                    <input type="text" name="content"  id="content" class="form-control footer__form-input"
+                                        placeholder="Enter your message" required>
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-2">Submit</button>
+                                <button type="submit" class="btn btn-2">Submit</button>
                         </form>
                     </div>
                 </div>

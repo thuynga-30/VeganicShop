@@ -28,10 +28,9 @@
       <div class="panels-container">
       <div class="panel left-panel">
         <div class="content">
-          <h3>One of us ?</h3>
+          <h3>Reset Your Password</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            laboriosam ad deleniti.
+            Enter a new password to secure your account.
           </p>
           <a href="{{ route('login') }}"> <button class="btn transparent" id="sign-up-btn">
             Log In

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail; // Import Mail để gửi email
 use App\Models\User;
 //contactmail
 use App\Mail\ContactMail;
+use App\Models\Comment;
 use App\Models\Product;
 
 
@@ -20,9 +21,11 @@ class MainController extends Controller
     }
     public function index(){
         $randomProducts = Product::inRandomOrder()->limit(6)->get();
+        $comment = Comment::inRandomOrder()->limit(3)->get();
         return view('main.shop.index',[
             'title' => 'VeganicShop',
             'randomProducts' => $randomProducts,
+            'comment' => $comment,
         ]);
     }
    
@@ -57,24 +60,29 @@ class MainController extends Controller
         }
     
         // Validate dữ liệu
-        $request->validate([
+        $validated=$request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             'phone' => 'required|digits:10',
             'dob' => 'required|date',
             'gender' => 'required|in:male,female',
             'address' => 'required|string|max:255',
+            'password'=> '',
         ]);
-    
-        // Chuẩn bị dữ liệu để update
-        $data = $request->only(['name', 'email', 'phone', 'dob', 'gender', 'address']);
-    
-        // Cập nhật dữ liệu
-        if ($user->update($data)) {
+        // $user = User::findOrFail($id);
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->phone = $validated['phone'];
+        $user->address = $validated['address'];
+        $user->gender = $validated['gender'];
+        $user->dob = $validated['dob'];
+        if($request->has('password')){
+            $user->password = bcrypt($request->password);
+            }
+        $user->save();
             return redirect()->route('profile')->with('success', 'Profile updated successfully');
-        }
+        // }
     
-        // return redirect()->back()->with('error', 'Failed to update profile');
     }
             
 

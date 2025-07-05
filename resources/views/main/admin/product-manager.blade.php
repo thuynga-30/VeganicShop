@@ -56,7 +56,7 @@
                 </div>
                 <div class="form-group">
                     <label class="lb-pm" for="price">Price</label>
-                    <input class="ip-pm" type="number" id="price" name="price" required>
+                    <input class="ip-pm" type="text" id="price" name="price" required>
                 </div>
                 <div class="form-group">
                     <label class="lb-pm" for="weight">Weight</label>
@@ -96,7 +96,7 @@
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->origin }}</td>
                         <td>${{ $product->price }}</td>
-                        <td>1{{ $product->quatity }} g</td>
+                        <td>{{ $product->quantity }} g</td>
                         <td>{{ $product->basic_des }}</td>
                         <td>{{ $product->description }}</td>
                         <td>
@@ -120,6 +120,7 @@
     @include('main.admin.footer')
 
     <script src="/assets/js/product-manager.js"></script>
+    <script src="/assets/js/cart.js"></script>
 </body>
 
 </html>

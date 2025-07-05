@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Mail\VerifyAccount;
 use App\Models\Cart;
+use App\Models\Comment;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Product;
@@ -42,8 +43,6 @@ class AdminController extends Controller
             'dob'=>'',
             'address'=>'',
             'gender'=>'',
-
-        
         ]);
         $data=$request->only('name','email','phone','dob','address','gender');
         $data['password']=bcrypt($request->password);
@@ -63,29 +62,6 @@ class AdminController extends Controller
             'user' => $user,
             ]);
     }
-//     public function updateUser(Request $request){
-//     $user= User::where('email',$request->email);
-//     $request->validate([
-//         'name' => 'required|string|max:255',
-//         'email' => 'required|email',
-//         'phone' => 'required|digits:10',
-//         'password' => 'required|min:6',
-//         'dob' => 'required|date',
-//         'gender' => 'required|in:male,female',
-//         'address' => 'required|string|max:255',
-//     ]);
-
-//     // Chuẩn bị dữ liệu để update
-//     $data = $request->only(['name', 'email', 'phone', 'dob', 'gender', 'address']);
-
-
-//     // Cập nhật dữ liệu
-//     if ($user->update($data)) {
-//         return redirect()->route('admin.user_manager')->with('success', 'Profile updated successfully');
-//     }
-//             return redirect()->back()->with('error', 'Failed to update profile');
-// }
-//     // Validate dữ liệu
 public function updateUser(Request $request,$id){
     // try {
         $validated = $request->validate([
@@ -95,10 +71,7 @@ public function updateUser(Request $request,$id){
             'address'=>'nullable|string',
             'gender'=>'nullable|in:male,female',
             'dob'=>'nullable|date',
-            
-
         ]);
-
         $user = User::findOrFail($id);
         $user->name = $validated['name'];
         $user->email = $validated['email'];
@@ -112,33 +85,24 @@ public function updateUser(Request $request,$id){
         $user->save();
 
         return redirect()->route('admin.user_manager')->with('success', 'Cập nhật thông tin người dùng thành công!');
-//     } catch (\Exception $e) {
-//         Log::error('Error updating user: ' . $e->getMessage());
-//         return redirect()->back()->with('error', 'Đã xảy ra lỗi khi cập nhật người dùng. Vui lòng thử lại.');
-    
-// }
+
 }
-
-
     public function user_delete(User $user){
        
         // Lấy danh sách các đơn hàng liên quan đến user
     $orders = Order::where('user_id', $user->id)->get();
-
     // Xóa tất cả chi tiết đơn hàng liên quan đến các đơn hàng này
     foreach ($orders as $order) {
         OrderDetail::where('order_id', $order->id)->delete();
     }
-
     // Xóa tất cả đơn hàng liên quan đến user
-    $orderDeleted = Order::where('user_id', $user->id)->delete();
-
+    Order::where('user_id', $user->id)->delete();
+     // Xóa tất cả comments liên quan đến user
+     Comment::where('user_id', $user->id)->delete();
     // Xóa user nếu tất cả liên quan đã xóa thành công
-    if ($orderDeleted) {
         if ($user->delete()) {
             return redirect()->route('admin.user_manager')->with('success', 'User deleted successfully');
         }
-    }
         return redirect()->route('admin.user_manager')->with('error','Failed to delete user');
 
     

@@ -37,7 +37,7 @@
             <div class="container">
                 <div class="row">
                 <div class="col-lg-6 clo-12">
-                <h3 class="history-title">Thông tin khách hàng</h3>
+                <h3 class="history-title">Users Infor</h3>
                 <table class="table cart__table">
                     <thead>
                         <tr>
@@ -61,7 +61,7 @@
                 </table>
             </div>
                 <div class="col-lg-6 clo-12">
-                        <h3 class="history-title">Thông tin đơn hàng</h3>
+                        <h3 class="history-title">Orders Infor</h3>
                     
                     <table class="table cart__table">
                         <thead>

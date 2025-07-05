@@ -36,14 +36,15 @@
       <div class="panels-container">
       <div class="panel left-panel">
         <div class="content">
-          <h3>One of us ?</h3>
+          <h3>Join Us Today!</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            laboriosam ad deleniti.
+            Create an account to experience the best organic shopping with 
+            <br>high-quality products.
           </p>
           <a href="{{ route('login') }}"> <button class="btn transparent" id="sign-up-btn">
             Log In
           </button></a>
+          <a href="{{ route('index') }}"><button class="btn transparent"><i class="fa-solid fa-house"></i></button></a>
         </div>
         <img src="/template/img/reg2.svg" class="image" alt="" />
       </div>

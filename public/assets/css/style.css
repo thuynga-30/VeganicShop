@@ -402,6 +402,7 @@
 
 .our-product__item-info {
     margin-bottom: 20px;
+    padding-top: 25px;
     display: flex;
     justify-content: space-between;
 }
@@ -671,7 +672,38 @@
 .comment__list-box {
     margin-top: 50px;
 }
+/* @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
+.comment__box {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+}
+
+.comment__box:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.comment__box:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.comment__box:nth-child(3) {
+    animation-delay: 0.4s;
+} */
+
+/* Nếu muốn tùy chỉnh thêm hiệu ứng cho các phần tử */
+.comment__avt {
+    border-radius: 50%;
+}
 .comment__box {
     padding: 30px 20px;
     position: relative;

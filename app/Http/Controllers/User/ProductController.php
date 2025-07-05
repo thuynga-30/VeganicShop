@@ -36,7 +36,13 @@ class ProductController extends Controller
         $searchName = $request->input('search_name');
         $searchType = $request->input('search_type');
         $searchOrigin = $request->input('search_origin');
-    
+        if (empty($searchName) && empty($searchType) && empty($searchOrigin)) {
+            // Trả về view với thông báo không có sản phẩm nào
+            return view('main.shop.search', [
+                'title' => 'Product',
+                'product' => collect(), // Truyền một collection rỗng
+            ]);
+        }
         // Query sản phẩm
         $query = Product::query();
     
@@ -50,6 +56,7 @@ class ProductController extends Controller
         if ($searchOrigin) {
             $query->where('origin', $searchOrigin);
         }
+
         $product = $query->paginate(12); 
        
         return view('main.shop.search',[

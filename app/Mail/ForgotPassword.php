@@ -23,17 +23,17 @@ class ForgotPassword extends Mailable
         $this->user = $data;
         $this->token = $token_data;
     }
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject : 'Forgot Password',
-        );
-    }
-    public function content(): Content{
-        return new Content(
-            view: 'emails.forgot-password',
-        );
-     }
+    // public function envelope(): Envelope
+    // {
+    //     return new Envelope(
+    //         subject : 'Forgot Password',
+    //     );
+    // }
+    // public function content(): Content{
+    //     return new Content(
+    //         view: 'emails.forgot-password',
+    //     );
+    //  }
 
 
     /**

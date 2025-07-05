@@ -2,53 +2,33 @@
     <div class="container">
         <div class="footer__inner">
             <div class="row">
-                <div class="col-3">
+                <div class="col-6">
                     <div class="footer__site-map">
                         <h3 class="footer__title section-title">
                             Site Map
                         </h3>
-                        <ul class="footer__list">
-                            <li class="footer__item">
+                        <ul class="footer__list am">
+                            <li class="footer__item it-am">
                                 <a href="{{ route('admin.admin') }}" class="footer__link">Home</a>
                             </li>
-                            <li class="footer__item">
+                            <li class="footer__item it-am">
                                 <a href="{{ route('admin.user_manager') }}" class="footer__link">User Manager</a>
                             </li>
-                            <li class="footer__item">
+                            <li class="footer__item it-am">
                                 <a href="{{ route('admin.product_manager') }}" class="footer__link">Product Manager</a>
                             </li>
-                            <li class="footer__item">
+                            <li class="footer__item it-am">
                                 <a href="{{ route('admin.order_manager') }}" class="footer__link">Order Manager</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                     <figure class="footer__logo-wrap">
                         <img src="/assets/img/logoVG.png" alt="" class="footer__logo">
                     </figure>
                 </div>
-                <div class="col-4">
-                    <div class="footer__form">
-                        <h3 class="footer__title section-title">
-                            Contact us here
-                        </h3>
-                        <form action="" class="footer__form-inner">
-                            <div class="footer__form-group form-group">
-                                <input type="email" id="email" class="form-control footer__form-input"
-                                    placeholder="Enter your email" required>
-                            </div>
-                            <!-- <button type="submit" class="btn btn-2">Submit</button> -->
-                        </form>
-                        <form action="" class="footer__form-inner1">
-                            <div class="footer__form-group form-group">
-                                <input type="email" id="email" class="form-control footer__form-input"
-                                    placeholder="Enter your message" required>
-                            </div>
-                            <button type="submit" class="btn btn-2">Submit</button>
-                        </form>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>

@@ -43,7 +43,7 @@ class AccountController extends Controller
             'password.min' => 'Password must be at least 4 characters',
         ]);
 
-       $data =$request->only('name','email','role','phone','address','gender');
+       $data =$request->only('name','email','role');
        $data['password'] = bcrypt($request->password);
         if ($acc=User::create($data)){
             Mail::to($acc->email)->send (new VerifyAccount($acc));
@@ -137,9 +137,7 @@ class AccountController extends Controller
             
         ]);
         $tokenData = UserResetToken::where('token',$token)->firstOrFail();
-        $user = User::where('email',$tokenData->email);//->firstOrFail(); //trỏ trực tiếp
-         // Check if the token has expired (optional)
-        // $user = $tokenData->user;
+        $user = User::where('email',$tokenData->email);
         $data=[
             'password' => bcrypt(request('password')),
         ];

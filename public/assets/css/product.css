@@ -315,3 +315,26 @@
     text-align: center;
     margin: 0 0 100px 0;
 }
+.no-products {
+    text-align: center;
+    margin: 50px 300px ;
+    color: #555;
+}
+
+.no-products__image {
+    max-width: 200px;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+.no-products__title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.no-products__message {
+    font-size: 16px;
+    color: #777;
+}

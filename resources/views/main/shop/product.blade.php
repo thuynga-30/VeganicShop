@@ -3,8 +3,7 @@
 
 <head>
     @include('main.header')
-    <link rel="stylesheet" href="assets/css/product.css">
-
+    <link rel="stylesheet" href="/assets/css/product.css">
 </head>
 <body>
     <!-- Header -->
@@ -15,7 +14,7 @@
                 <div class="container">
                     <div class="header__top-inner">
                         <!-- Logo -->
-                        <img src="assets/img/logo4.png" alt="" class="logo">
+                        <img src="/assets/img/logo4.png" alt="" class="logo">
                         <!-- Navbar -->
                         @include('main.navbar')
 
@@ -32,7 +31,7 @@
             <div class="container">
                 <div class="search__form-group">
                     @include('main.alert')
-                    <form class="search__form" action="{{ route('search') }}" method="GET">
+                    <form class="search__form" action="{{ route('products.search') }}" method="GET">
                         <div class="row">
                             <div class="col-lg-3 col-6">
                                 <div class="form-group">
@@ -59,7 +58,7 @@
                                         class="search__select form-control">
                                         <option class="search__option" value="">Select Origin</option>
                                         @foreach($origins as $origin)
-                                        <option value="{{$category->origin}}">{{$origin->origin}}</option>
+                                        <option value="{{$origin->origin}}">{{$origin->origin}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -84,7 +83,7 @@
                         @foreach ($products as $prod)
                             <div class="col-lg-3 col-6">
                                 <div class="product__item">
-                                    <a href="{{ route('details',$prod->id) }}">
+                                    <a href="{{ route('products.details',$prod->id) }}">
                                     <figure class="product__img-wrap">
                                         <img src="/assets/img/products/{{ $prod->image }}" alt="" class="product__img">
                                     </figure>

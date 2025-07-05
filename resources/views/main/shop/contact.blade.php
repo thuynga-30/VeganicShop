@@ -3,7 +3,7 @@
 
 <head>
     @include('main.header')
-    <link rel="stylesheet" href="assets/css/product.css">
+    <link rel="stylesheet" href="/assets/css/product.css">
     <link rel="stylesheet" href="assets/css/contact.css">
 
 </head>
@@ -48,12 +48,12 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Họ và tên" value=" {{ Auth::user()->name }}">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="FullName" value="{{ Auth::user()->name }}">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Số điện thoại" value=" {{ Auth::user()->phone }}">
+                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="PhoneNumber" value="{{ Auth::user()->phone }}">
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <textarea name="content" class="form-control" id="content" placeholder="Nội dung" rows="8" maxlength="600" required></textarea>
+                                    <textarea name="content" class="form-control" id="content" placeholder="Message" rows="8" maxlength="600" required></textarea>
                                 </div>
                                 <div class="form-group" style="text-align: center;">
                                     <button type="submit" class="contact__btn btn btn-2">
@@ -95,7 +95,7 @@
                                         <div class="contact__icon-wrap">
                                         <i class="fa-solid fa-envelope"></i>
                                         </div>
-                                        <a class="contact__link" href="mailto:contact@tnna.vn">veganicshopa@gmail.com</a>
+                                        <a class="contact__link" href="mailto:veganicshopa@gmail.com">veganicshopa@gmail.com</a>
                                     </li>
                                     <li class="contact__item">
                                         <div class="contact__icon-wrap">

@@ -34,11 +34,9 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*',function($view){
             $cats=Category::orderBy('name','ASC')->get();
             $products = Product::orderBy('id','ASC')->paginate(12); 
-            //  $users = User::orderBy('id','ASC')->get(); 
             $users = User::where('role', 'user')->paginate(12);
             $origins = Product::select('origin')->distinct()->get();
             $oders = Order::orderBy('id','ASC')->paginate(4); 
-            // $comments=Comment::orderBy('id','ASC')->get();
             $view->with(compact('cats','products','users','origins','oders'));
 
         });

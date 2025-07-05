@@ -64,13 +64,16 @@
                 <label class="lb-prf" for="address">Address</label>
                 <textarea class="infor inp tar" id="address" name="address" readonly>{{ $user->address }}</textarea>
             </div>
-           
+            <div class="form-groupprf">
+                <label class="lb-prf" for="address">Password</label>
+                <input class="infor" type="password" name="password" id="pass" readonly>
+            </div>
             <button type="submit" class="btnprf save-btnprf hiddenprf">Save Changes</button>
-
+            
         </form>
             <div class="form-actionsprf">
                 <button type="button" class="btnprf edit-btnprf" onclick="enableEditing()">Edit Profile</button>
-                <button type="button" class="btnprf cancel-abtnprf hiddenprf" onclick="cancelEditing()">Cancel</button>
+                <button type="button" class="btnprf edit-btnprf" onclick="cancelEditing()">Cancel</button>
             </div>
         
     </div>

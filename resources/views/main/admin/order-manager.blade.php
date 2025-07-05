@@ -36,7 +36,7 @@
         </div>
         <div class="stat-box">
           <h3 class="s-title">Revenue This Week</h3>
-          <p id="revenueToday">${{ $totalRevenueToday }}</p>
+          <p id="revenueToday">${{ number_format($totalRevenueToday, 2, '.', ',') }}</p>
         </div>
       </div>
   
@@ -69,7 +69,7 @@
                 <a href="{{ route('order.detail',$item->id) }}" class="btn-um save-btnum">Detail</a>
                 <form action="{{ route('admin.delete_order',$item->id) }}" method="POST" >
                   @csrf
-                <button class="delete-button" onclick="confirmDeleteOrder()">🗑️ Delete</button>
+                <button class="delete-button" onclick="confirmDeleteOrder()">Delete</button>
                 </form>
               </td>
             </tr>

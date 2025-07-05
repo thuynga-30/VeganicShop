@@ -26,17 +26,17 @@ class ContactMail extends Mailable
     }
 
     //envelope
-    public function envelope(): Evelope{
-        return new Evelope(
-            subject: 'Contact Email',
-        );
-    }
-    // content
-    public function content(): Content{
-        return new Content(
-            view: 'emails.contact-mail',
-        );
-    }
+    // public function envelope(): Evelope{
+    //     return new Evelope(
+    //         subject: 'Contact Email',
+    //     );
+    // }
+    // // content
+    // public function content(): Content{
+    //     return new Content(
+    //         view: 'emails.contact-mail',
+    //     );
+    // }
     public function build()
     {
         return $this->view('emails.contact-mail');

@@ -19,15 +19,13 @@ class CartController extends Controller
             return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để xem giỏ hàng.');
         }
 
-        $cart = Cart::where('user_id', $auth->id)->with('product')->get();
-        // $orders = Order::where('user_id', $auth->id)->get();
-        // return view('cart.index', compact('cart'));
-        // $cart= Cart::orderBy('created_at','ASC')->get();
+        $cart = Cart::where('user_id', $auth->id)->with('product')->orderBy('created_at','ASC')->get();
+
         return view('main.shop.cart',[
             'title' => 'Cart',
             'auth' => $auth,
             'cart' => $cart,
-            // 'orders' => $orders
+            
             ]);
     }
     //add_cart
@@ -47,10 +45,7 @@ class CartController extends Controller
                     'quantity' => $cartt->quantity + $quantity,
                      'price' => $product->price * ($cartt->quantity + $quantity),
                 ]);
-            //->increment('quantity',$quantity);
-            // $cartt
             return redirect()->route('cart.cart')->with('success','Product updated to cart');
-
         }else{
         $data=[
             'user_id' => auth()->id(),
@@ -67,7 +62,7 @@ class CartController extends Controller
 
     //update_cart
     public function update_cart(Product $product,Request $request){
-        
+            
         $quantity= $request->quantity ? floor($request->quantity): 1 ;
         $user_id= auth()->id();
         $cart = Cart::where('user_id',$user_id)
@@ -96,28 +91,22 @@ class CartController extends Controller
         return redirect()->route('cart.cart')->with('success','Product deleted from cart');
 
     }
-    public function checkout(Request $request)
-{
-    // Validate that at least one product is selected
-    $request->validate([
-        'selected_products' => 'required|array',
-    ]);
-
-    foreach ($request->selected_products as $productId) {
+   
+    public function checkout(Request $request){
+        $request->validate([
+            'selected_products' => 'required|array',
+        ]);
+    
         Cart::where('user_id', auth()->id())
-            ->where('product_id', $productId)
+            ->whereIn('product_id', $request->selected_products)
             ->update(['status' => 1]);
     
-    }
-    // Optionally, reset status of unselected products to 0
+        Cart::where('user_id', auth()->id())
+            ->whereNotIn('product_id', $request->selected_products)
+            ->update(['status' => 0]);
     
-    Cart::where('user_id', auth()->id())
-        ->whereNotIn('product_id', $request->selected_products)
-        ->update(['status' => 0]);
-
-    // Redirect to the checkout page
-    return redirect()->route('order.order')->with('success', 'Products updated for checkout!');
-
-    // return redirect()->back()->with('success', 'Cart updated successfully!');
+        return redirect()->route('order.order')->with('success', 'Products updated for checkout!');
     }
+ 
+    
 }

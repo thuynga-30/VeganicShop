@@ -22,7 +22,6 @@ class OrderController extends Controller
             return redirect()->route('cart.cart')->with('error', 'Please select at least one product to proceed to checkout.');
         }
     
-           // $cart = Cart::where('user_id', $user->id)->with('product')->get();
             return view('main.shop.checkout',[
                 'title' => 'CheckOut',
                 'cart' => $cart,
@@ -59,8 +58,7 @@ class OrderController extends Controller
         ->where('status', 1)
         ->get();
         if ($selectedItems->isEmpty()) {
-            return redirect()->route('cart.cart')->with('error', 'Please select at least one product
-            to proceed to checkout.');
+            return redirect()->route('cart.cart')->with('error', 'Please select at least one product to proceed to checkout.');
         }
         $data = $request->only('name','email','address','phone','gender');
         $data['user_id'] = $user->id;

@@ -98,6 +98,7 @@ body {
 
 .provide__item {
     margin-bottom: 30px;
+    height: 350px;
     padding: 50px 20px;
     display: flex;
     align-items: center;

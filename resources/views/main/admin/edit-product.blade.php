@@ -55,7 +55,7 @@
                 </div>
                 <div class="form-group">
                     <label class="lb-pm" for="price">Price</label>
-                    <input class="ip-pm" type="number" id="price" name="price" value="{{ $product->price }}">
+                    <input class="ip-pm" type="text" id="price" name="price" value="{{ $product->price }}">
                 </div>
                 <div class="form-group">
                     <label class="lb-pm" for="weight">Weight</label>

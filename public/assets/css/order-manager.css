@@ -51,6 +51,7 @@
 }
 
 .delete-button {
+    padding-top: 10px;
     background: none;
     border: none;
     color: red;

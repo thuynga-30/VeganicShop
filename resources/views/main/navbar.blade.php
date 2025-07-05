@@ -26,22 +26,15 @@
  @else
  <nav class="navbar">
     <ul class="navbar__list">
-        @guest
+    
         <li class="navbar__item">
             <a href="{{ route('index') }}" class="navbar__link">Home</a>
         </li>
-        @endguest
-        @auth
-        <li class="navbar__item">
-            <a href="{{ route('index') }}" class="navbar__link">Home</a>
-        </li>
-        @endauth
-        
         <li class="navbar__item">
             <a href="{{ route('about') }}" class="navbar__link">About</a>
         </li>
         <li class="navbar__item">
-            <a href="{{ route('product') }}" class="navbar__link">Product</a>
+            <a href="{{ route('products.product') }}" class="navbar__link">Product</a>
         </li>
         
         
