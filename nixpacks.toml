@@ -1,11 +1,9 @@
 [phases.setup]
-nixPkgs = ["php82", "php82Packages.composer", "zip", "openssl", "git", "nodejs_20"]
+nixPkgs = ["php82", "php82Packages.composer", "zip", "openssl", "git"]
 
 [phases.build]
 cmds = [
-  "composer install --no-dev --optimize-autoloader",
-  "npm install",
-  "npm run build"
+  "composer install --no-dev --optimize-autoloader"
 ]
 
 [phases.start]
