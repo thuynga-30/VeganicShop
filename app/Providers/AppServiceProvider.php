@@ -10,6 +10,7 @@ use App\Models\Comment;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -40,5 +41,8 @@ class AppServiceProvider extends ServiceProvider
             $view->with(compact('cats','products','users','origins','oders'));
 
         });
+         if (env('APP_ENV') === 'production') {
+        URL::forceScheme('https');
+    }
     }
 }
