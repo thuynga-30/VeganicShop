@@ -70,7 +70,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/cart', [CartController::class, 'cart'])->name('cart.cart');
         Route::get('/cart/add/{product}', [CartController::class, 'add_cart'])->name('cart.add');
         Route::get('/cart/delete/{product}', [CartController::class, 'delete_cart'])->name('cart.delete');
-        Route::get('cart/update/{product}', [CartController::class, 'update_cart'])->name('cart.update');
+        Route::post('/cart/update/{product}', [CartController::class, 'update_cart'])->name('cart.update');
         Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
       });
     //order

@@ -61,27 +61,30 @@ class CartController extends Controller
     }
 
     //update_cart
-    public function update_cart(Product $product,Request $request){
-            
-        $quantity= $request->quantity ? floor($request->quantity): 1 ;
-        $user_id= auth()->id();
-        $cart = Cart::where('user_id',$user_id)
+ public function update_cart(Product $product, Request $request)
+{
+    $quantity = max(1, intval($request->input('quantity'))); // không cho số < 1
+    $user_id = auth()->id();
+
+    $cart = Cart::where('user_id', $user_id)
+                ->where('product_id', $product->id)
+                ->first();
+
+    if ($cart) {
+        Cart::where('user_id', $user_id)
             ->where('product_id', $product->id)
-            ->first();
-            if($cart){
-                Cart::where([
-                    'user_id'=> $user_id,
-                    'product_id'=> $product->id
-                    ])->update([
-                        'quantity' => $quantity,
-                        'price' => $product->price * $quantity,
-                    ]);
-                    return redirect()->route('cart.cart')->with('success','Product updated to cart');
-            }else{
-                return redirect()->route('index')->with('error','Product not found in cart');
-            }  
-                        
+            ->update([
+                'quantity' => $quantity,
+                'price' => $product->price * $quantity,
+        ]);
+
+
+        return redirect()->route('cart.cart')->with('success', 'Đã cập nhật giỏ hàng');
+    } else {
+        return redirect()->route('cart.cart')->with('error', 'Không tìm thấy sản phẩm trong giỏ hàng');
     }
+}
+
     public function delete_cart(Product $product){
         $user_id= auth()->id();
         Cart::where([
@@ -92,21 +95,28 @@ class CartController extends Controller
 
     }
    
-    public function checkout(Request $request){
-        $request->validate([
-            'selected_products' => 'required|array',
-        ]);
-    
-        Cart::where('user_id', auth()->id())
-            ->whereIn('product_id', $request->selected_products)
-            ->update(['status' => 1]);
-    
+    public function checkout(Request $request)
+    {
+        $user_id = auth()->id();
+        $selected_products = $request->input('selected_products', []);
+
+        if (empty($selected_products)) {
+            return redirect()->back()->with('error', 'Bạn chưa chọn sản phẩm để thanh toán.');
+        }
+
+        // Lưu trạng thái đã chọn
+        Cart::where('user_id', $user_id)
+            ->whereIn('product_id', $selected_products)
+            ->update(['status' => true]);
+
+        // Chuyển đến trang thanh toán
         Cart::where('user_id', auth()->id())
             ->whereNotIn('product_id', $request->selected_products)
             ->update(['status' => 0]);
     
         return redirect()->route('order.order')->with('success', 'Products updated for checkout!');
     }
- 
+    
+
     
 }
